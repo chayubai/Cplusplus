@@ -11,6 +11,6 @@ int main()
 	//全局变量的作用域
 	cout << "全局k = " << ::k << endl;
 	//使用std作用域下的cout
-	std::cout << "全局k = " << ::k << endl;
+	std::cout << "全局k = " << ::k << std::endl;
 	return 0;
 }

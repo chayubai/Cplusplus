@@ -26,7 +26,7 @@ int main()
 #include <stdio.h>
 //C中的头文件，都可以转换为C++头文件，取消后缀，在C头文件名上＋c前缀
 
-using namespace std; //这一句很重要
+using namespace std; //这一句很重要，使用命名空间std，可理解为打开一个std房间，房间里可能有一些东西需要在下面用到
 //由于一个头文件包含了很多的类，而类中有很多的相同名称的变量
 //为了区分不同类下的相同变量名，将变量所属空间进行声明，就代表使用该空间的变量
 //由于方便后续代码中要使用命名空间std下的变量，于是告诉编译器使用命名空间std
@@ -34,11 +34,12 @@ int main()
 {
 	//cout 标准输出流对象，就是黑屏幕，即 c out
 	cout << "hello world" << endl;//等同于cout << "hello world\n"
+	//cout 和endl是在命名空间std中
 	printf("hello world\n");
 	//cout << "..." 可暂时理解为将字符串流向屏幕中
 	//<< 本身为左移操作符，在C++下具有新的含义，用于在cout后拼接输出的内容
 	//类似的如：*可以是乘法操作符，也可以是解引用操作符
-	//endl end line 刷新缓冲区并且换行，兼容所有平台（windows的回车使用\r\n，Linux下是\n）
+	//endl  - end line 刷新缓冲区并且换行，兼容所有平台（windows的回车使用\r\n，Linux下是\n）
 	
 	return 0;
 }
