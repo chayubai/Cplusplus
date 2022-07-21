@@ -28,6 +28,7 @@ int myfunc(int a, int b)
 	cout << "myfunc(int a, int b)" << endl;
 	return 0;
 }
+
 //返回值不可以作为函数重载的条件
 //void myfunc(int a)
 //{
@@ -46,6 +47,7 @@ int func(int a,int b = 30)
 	cout << "func2" << endl;
 	return 0;
 }
+//当调用func(10)会发生歧义
 
 //如果函数重载的话，不要初始化占位参数，防止调用歧义
 int func(int a, int b, int = 0)
@@ -71,7 +73,7 @@ void Func(int a)
 {
 	cout << "Func(int a)" << endl;
 }
-void Func(int &a)//int &a = 10
+void Func(int &a)//int &a = 10，不合法
 {
 	cout << "Func(int &a)" << endl;
 }
@@ -103,15 +105,23 @@ int printA(char ch)
 }
 void test4()
 {
-	printA(3.14f);
+	printA(3.14f);//调用隐式转换的函数printA(double a)
 	printA(19.00);
-	printA(19);
+	printA(19);//调用完全匹配的函数printA(char ch)，否则调用printA(int a)
 	//注意：
 	//1、如果能够匹配的函数，则调用完全匹配的函数
 	//2、如果没有完全匹配的函数，则调用隐式转换的函数
 	//3、都匹配不到，调用失败。
 	printA('a');
 }
+//重载底层实现：
+//void func(char a);       //func_c(char a)
+//void func(char a,int b, double c);      //func_cid(char a,int b, double c)
+//底层还是会将重名函数，进行改成不同的名字
+//不同操作系统底层实现大同小异
+//_Z4funcv	 void func(); 
+//_Z4funcc	 void func(char a);
+//_Z4funccid  void func(char a,int b, double c);
 int main()
 {
 	//test1();
@@ -122,5 +132,7 @@ int main()
 	return 0;
 }
 
-//注意：string &rfood = food,void eating(string food)和void eating(string &rfood)
+//注意：
+//string &rfood = food;
+//void eating(string food)和void eating(string &rfood)
 //当传入food时，会产生二义性，编译器将对象引用和对象视为同一个函数

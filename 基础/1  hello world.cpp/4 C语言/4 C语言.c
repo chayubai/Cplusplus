@@ -187,9 +187,9 @@ int main()
 	const int a = 10;
 	int const b = 20;
 	
-	const int* c;
+	const int* c;//const修饰int* 
 	//第三个 c是一个指向常整型数的指针（所指向的内存数据不能被修改，但是本身可以修改）
-	int* const d;
+	int* const d;//const修饰d 
 	//第四个 d是一个常指针（指针变量不能被修改，但是它所指向的内存空间可以被修改）
 	const int* const e;
 	//第五个 e是一个指向常整形的常指针（指针和它所指向的内存空间，均不能被修改）

@@ -87,7 +87,7 @@ public://为了方便调用，构造函数和析构函数必须声明在公共控制权限下
 	//拷贝构造函数：
 	//1、没有返回类型，也不用写void，没有返回值，没有return语句
 	//2、函数名与类名相同
-	//3、参数为const 类名 &别名,加const，防止把本体修改掉
+	//3、参数为const 类名 &别名,加const，防止把本体的属性修改掉
 	Person(const Person&p)
 	{
 		cout << "调用Person(const Person &p)拷贝函数" << endl;
@@ -134,6 +134,7 @@ void test4()
 	//1、括号法，如：Person p(10);
 	//注意事项一：不要用括号法，调用无参的构造函数，
 	//因为编译器会把它当作函数的声明
+	//调用默认构造函数，不需要括号，Person p();否则编译器当成函数声明
 
 	//2、显示法
 	Person p = Person(10);//创建对象，并用p引用 - 有参构造
@@ -168,6 +169,10 @@ int main()
 
 	//test4();
 
-	test5();
-	return 0;
+	//test5();
+
+	Person p;
+	system("pause");//阻塞，当执行完这一句
+
+	return 0;//来到这里后，调用析构函数
 }

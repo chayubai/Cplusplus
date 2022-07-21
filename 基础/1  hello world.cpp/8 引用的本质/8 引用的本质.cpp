@@ -25,12 +25,12 @@ struct typeB
 {
 	int* a;
 };
-void motify1(int* const a)//int *const a = main::&a
+void motify1(int* const a)//int *const a = &a
 {
 	*a = 300;
 }
 void motify2(int& a)//当我们将引用作为函数参数传递的时候，编译器会替我们将实参取地址给引用
-{					//int &a = main::&a
+{					//int &a = &a
 	a = 300;//对一个引用操作赋值的时候，编译器替我们隐藏*操作
 }
 
@@ -44,6 +44,7 @@ int main()
 	//引用所占用的大小，跟指针是相等的。
 	int a = 10;
 	int& re = a;
+	//const修饰的变量需要必须初始化，引用也必须初始化
 	int* const p = &a;
 	//综上两点，引用可能是一个常指针。
 
@@ -51,3 +52,5 @@ int main()
 	motify2(a);
 	return 0;
 }
+//int arr[10]; arr在常量区，arr指向栈区10个整型的空间
+//int& r = a;  r在常量区，r指向栈区a变量的空间

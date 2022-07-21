@@ -42,7 +42,7 @@ void test3()
 }
 
 //5、命名空间是开放的，可以随时给命名空间添加新的成员
-namespace B
+namespace B//此命名空间会和上面的命名空间B进行合并
 {
 	int m_B = 10;
 }
@@ -56,6 +56,7 @@ void test4()
 namespace 
 {
 	//当写的命名空间是匿名的，相当于写了static int m_C = 1000;static int m_D = 2000;
+	//静态变量只能在当前文件内使用
 	int m_C = 1000;
 	int m_D = 2000;
 }

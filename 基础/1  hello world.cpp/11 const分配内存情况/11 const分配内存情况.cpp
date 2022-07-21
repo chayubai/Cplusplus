@@ -1,26 +1,26 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+//extern编译器也会给const变量分配内存
 //1、对const变量取地址，变量放在符号表中，会分配临时内存
 void test1()
 {
 	const int a = 10;
-	int* p = (int*)&a;
+	int* p = (int*)&a;//会分配临时内存
 }
 
 //2、使用普通变量，初始化const变量
 void test2()
 {
 	int a = 10;
-	const int b = a;
+	const int b = a;//会分配内存
 	int* p = (int*)&a;
 	*p = 100;//修改成功
 	cout << "b = " << b << endl;
 }
 
 #include <string>
-//3、对于自定义数据类型
+//3、对于自定义数据类型，加const也会分配内存
 struct Person
 {
 	string m_Name;//包含头文件#include <string>

@@ -32,7 +32,7 @@ public:
 		int d_x = m_x - another.m_x;
 		int d_y = m_y - another.m_y;
 
-		double dis = sqrt(d_x * d_x + d_y + d_y);
+		double dis = sqrt(d_x * d_x + d_y * d_y);
 		return dis;
 	}
 private:

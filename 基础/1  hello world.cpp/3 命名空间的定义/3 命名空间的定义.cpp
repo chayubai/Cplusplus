@@ -28,11 +28,10 @@ int main()
 #if 0
 #include <iostream>
 using namespace std;
-//命名空间必须放在全局外面
+//命名空间的定义必须放在全局外面
 namespace spaceA {
 	int g_a = 10;
 }
-
 int main()
 {
 	//方式二，局部声明
@@ -51,7 +50,7 @@ namespace spaceA {
 }
 int main()
 {
-	//方式三，局部引入
+	//方式三，命名空间的局部声明，局部引入
 	using namespace spaceA;
 	cout << g_a << endl;
 	return 0;

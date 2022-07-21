@@ -1,16 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
+const double PI = 3.14;
 //1、面向过程:
 //圆的周长
 double getCircleGirth(double r)
 {
-	return 2 * 3.14 * r;
+	return 2 * PI * r;
 }
 //圆的面积
 double getCircleArea(double r)
 {
-	return 3.14 * r * r;
+	return PI * r * r;
 }
 void test1()
 {
@@ -37,12 +38,12 @@ public:
 	//圆的周长
 	double getGirth()
 	{
-		return 2 * 3.14 * m_r;
+		return 2 * PI * m_r;
 	}
 	//圆的面积
 	double getArea()
 	{
-		return 3.14 * m_r * m_r;
+		return PI * m_r * m_r;
 	}
 private:
 	double m_r;

@@ -12,7 +12,7 @@ int main()
 }
 #endif 
 
-//VS   --  Windows下的编译器集成环境
+//VS   --  Windows下的编译器集成环境 Ctrl + F7编译 Ctrl+F5运行
 //C    --  Linux下的编译器为gcc
 //C++  --  Linux下的编译器为g++
 
@@ -34,13 +34,14 @@ int main()
 {
 	//cout 标准输出流对象，就是黑屏幕，即 c out
 	cout << "hello world" << endl;//等同于cout << "hello world\n"
-	//cout 和endl是在命名空间std中
+	//cout 和endl是在命名空间std中 <<左移操作符，在C++里面实现了功能的改造 - 操作符重载
 	printf("hello world\n");
 	//cout << "..." 可暂时理解为将字符串流向屏幕中
 	//<< 本身为左移操作符，在C++下具有新的含义，用于在cout后拼接输出的内容
 	//类似的如：*可以是乘法操作符，也可以是解引用操作符
 	//endl  - end line 刷新缓冲区并且换行，兼容所有平台（windows的回车使用\r\n，Linux下是\n）
 	
+	system("pause");//请按任意键继续
 	return 0;
 }
 #endif
@@ -95,9 +96,9 @@ int main()
 #if 0
 	int num;
 	char ch1;
-	cin >> num;
+	cin >> num;// c in 标准输入 代表键盘 
 	cin >> ch1;
-
+	//>> 右移操作符，在C++里面实现了功能的改造 - 操作符重载
 	cout << num << endl; 
 	cout << ch1 << endl;
 #endif
@@ -114,3 +115,36 @@ int main()
 
 	return 0;
 }
+
+//面向对象方法：
+//1 类的抽象 成员变量和成员函数
+//2 实例化   类的对象
+//3 面向过程加工的是一个个的函数
+//	面向对象加工的是一个个的类
+
+//思考1：类的调用 执行过程的分析  -> 不是一步一步的执行
+//思考2：类是一个数据类型 定义一个类，是一个抽象的概念，不会给你分配内存
+//用数据类型定义变量，即实例化对象的时候才会分配内存
+//思考3：C++是如何处理和区分多个对象调用同一个类的成员函数
+
+#if 0
+#include <iostream>
+using namespace std;
+class circle
+{
+public:
+	double r;//随机值
+	double pi = 3.1415926;
+	double area = pi * r * r;//这句话area = pi * r * r在创建对象的时候已经执行了，此时area为随机值
+};
+int main()
+{
+	circle c1;//类中的成员变量已经执行了
+	cout << "请输入半径r：";
+	cin >> c1.r;//将键盘中输入的值，赋值给c1的成员变量r
+
+	cout << c1.area << endl;//当执行这句话时，只是从变量所在的内存中拿值，并没有执行pi * r * r
+	//因此需要引入成员函数
+	return 0;
+}
+#endif

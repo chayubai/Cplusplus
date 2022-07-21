@@ -126,9 +126,11 @@ using namespace std;
 const int m_A = 100;//全局const，和C语言结论一致
 int main()
 {
-	//C++语言，const修饰的变量a的值可以通过指针不能被改变
+	//C++语言，const修饰的变量a的值通过指针不能被改变
 	const int a = 10;//局部const  a是真正的常量
 	//const存放在符号表中，以key，value键值对的形式对应，即key：a，value：10
+	//C语言中，局部变量，const修饰的变量，编译器会分配内存
+	//C++中，局部变量，const修饰的变量，不会分配内存
 
 	int* p = (int*)&a;//这里C++严格类型转换，由于&a是const int*类型，要强转为int*
 	*p = 50;//*p改变的是临时开辟的temp
@@ -143,6 +145,8 @@ int main()
 
 	//C++语言，const修饰的变量a，是常量，可以初始化数组
 	int array[a] = { 0 };
+
+	//注意区别#define定义的常量，是预处理阶段处理的，const修饰的变量，是编译是处理的
 	return 0;
 }
 #endif
@@ -181,7 +185,7 @@ enum season
 int main()
 {
 	//C++语言枚举类型变量，不可以赋值为整型值，否则会报错
-	//enum season s = 0;
+	//enum season s = 0;//当枚举太多，赋数值不方便
 	enum season s = SPR;
 	if (s == 3)
 	{

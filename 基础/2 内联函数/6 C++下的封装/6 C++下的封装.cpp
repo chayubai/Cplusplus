@@ -77,7 +77,7 @@ void test2()
 }
 //C++封装理念：
 //1、将属性和行为作为一个整体，来表现生活中的事物
-//2、将属性和行为，加以权限控制
+//2、将属性和行为，加以权限控制，有严格的类型转换
 
 //struct 和class区别？
 //1、class默认权限是私有权限，struct默认是公共权限
@@ -85,6 +85,7 @@ void test2()
 //public:对象可以在类内和类外都能访问成员
 //private:对象可以在类内访问成员，类外无法访问成员，子类不可以访问父类private权限
 //protected:对象可以在类内访问成员，类外无法访问成员，子类可以访问父类protected权限
+//private和protected主要在类的继承时有区别
 
 #include <string>
 class Person3

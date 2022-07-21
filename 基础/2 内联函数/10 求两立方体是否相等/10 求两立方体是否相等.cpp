@@ -52,20 +52,21 @@ public:
 		return m_a == another.m_a && m_b == another.m_b && m_c == another.m_c;
 	}
 private:
-	int m_a;
-	int m_b;
-	int m_c;
+	int m_a;//可读，可写
+	int m_b;//可读，可写
+	int m_c;//可读，可写
 };
 
 //全局函数
-bool judgeCube(Cube& c1, Cube& c2)
-{
+bool judgeCube(Cube& c1, Cube& c2)//const成员函数不能调用非const成员函数。因为非const成员函数可能会改变成员变量的值。
+{//judgeCube(const Cube& c1, const Cube& c2)//这是不对的
 	/*if (c1.getA() == c2.getA() && c1.getB() == c2.getB() && c1.getC() == c2.getC())
 	{
 		return true;
 	}
 	return false;*/
-	return c1.getA() == c2.getA() && c1.getB() == c2.getB() && c1.getC() == c2.getC();
+	bool ret = c1.getA() == c2.getA() && c1.getB() == c2.getB() && c1.getC() == c2.getC();
+	return ret;
 }
 
 void test1()
@@ -114,6 +115,15 @@ void test3()
 	{
 		cout << "不相等" << endl;
 	}
+}
+void test4()
+{
+	/*void func(const Cube & cub)//为什么不能加const，因为无法保证成员函数里是否修改了成员变量
+	{
+		cub.getA();//getA()可能会修改m_a的值
+	}*/
+	//将int getA()const时，不会报错
+
 }
 int main()
 {

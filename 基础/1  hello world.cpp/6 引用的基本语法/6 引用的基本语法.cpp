@@ -7,7 +7,7 @@ void test1()
 {
 	int a = 10;
 	//1、引用的基本语法： 类型 &别名 = 原名
-	int& re = a;//int & 使用引用数据类型，re是a的别名
+	int& re = a;//int& 使用引用数据类型，re是a的别名
 	re = 50;//将a的空间的值改为了50
 	cout << "a = " << a << endl;
 	cout << "b = " << re << endl;
@@ -23,8 +23,9 @@ void test2()
 	//引用一旦初始化后，就不可以引向其他变量
 
 	int b = 200;
+	//&ra = b;//会报错
 
-	ra = b;//此行不是给b取别名为ra，而是将b赋值为ra
+	ra = b;//此行不是给b取别名为ra，而是将b赋值为ra，即ra = a = b
 
 	cout << "a = " << a << endl;//200
 	cout << "b = " << ra << endl;//200

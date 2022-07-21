@@ -4,12 +4,13 @@ using namespace std;
 void test1()
 {
 	//string &str = "hello";//不可以直接对常量进行引用
-	//int &ref = 10;//不可以直接对常量进行引用
+	//int &ref = 10;//不可以直接对常量进行引用，引用了不合法的内存
 	const int& ref = 10;//加了const之后，相当于写成，int temp = 10;const int &ref = temp;
 
 	//const int *ref = &temp
+	
 	//int* p = &ref;//报错，需要强转，注意观察报错情况:const int *转换为int*
-	int* p = (int*)&ref;
+	int* p = (int*)&ref;//const int *ref = &temp，通过指针可以修改
 	*p = 10000;
 	cout << ref << endl;
 }

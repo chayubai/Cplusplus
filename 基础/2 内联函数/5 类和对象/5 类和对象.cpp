@@ -1,4 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
+//类是对对象的抽象
+//对象是对类的实例
 #if 0
 #include <iostream>
 using namespace std;
@@ -63,10 +66,12 @@ class Animal
 {
 	//{}以内叫类的内部，以外叫类的外部
 public:
+	//类中的变量 称为成员属性 成员变量
 	//public以下定义的成员变量和成员函数，可以在类的内部和外部都可以访问
 	char kind[64];
 	char color[20];
 
+	//类中的函数 称为成员函数 成员方法
 	void printAnimal()
 	{
 		cout << "kind" << kind << endl;

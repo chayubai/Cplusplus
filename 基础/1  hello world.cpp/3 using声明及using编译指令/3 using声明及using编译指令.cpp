@@ -8,13 +8,13 @@ namespace KingGlory
 }
 namespace LOL
 {
-	int sunwukongId = 1;
+	int sunwukongId = 10;
 }
 void test1()
 {
 	//局部变量优先
 	//int sunwukongId = 2;
-	//1、using声明
+	//1、using声明，说明以后看到sunwukongId是用KingGlory下的
 	using KingGlory::sunwukongId;//可以理解为打开这个空间，并使用sunwukongId
 	//直接告诉编译器使用KingGlory空间下的sunwukongId
 

@@ -3,6 +3,11 @@
 using namespace std;
 
 #if 0
+int getA()
+{
+	int a = 10;
+	return a;//int tmp = a;
+}
 int& getA1()
 {
 	int a = 10;
@@ -16,11 +21,11 @@ int& getA2()
 int main()
 {
 	int main_a = 0;
-	main_a = getA1();//main_a = tmp;//数值拷贝
+	main_a = getA1();//main_a = tmp;//赋值操作，数值拷贝
 	cout << "main_a = " << main_a << endl;
 #if 0
 	//引用作为返回类型，不要返回局部变量的引用
-	int& main_a_re = getA1();
+	int& main_a_re = getA1();//int& main_a_re = tmp;
 	cout << "main_a_re = " << main_a_re << endl;
 	cout << "main_a_re = " << main_a_re << endl;
 #endif
@@ -30,7 +35,7 @@ int main()
 	cout << "main_a_re = " << main_a_re << endl;
 
 	//引用如果当函数返回类型的话，函数可以当左值
-	getA2() = 1000;
+	getA2() = 1000;//函数返回的是变量的引用
 
 	return 0;
 }

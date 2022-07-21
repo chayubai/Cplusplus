@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
+//C语言没有默认参数和占位参数的概念
 #if 0
 //默认参数:形参被初始化了
 int myfunc1(int a = 10,int b = 5)
@@ -9,7 +10,7 @@ int myfunc1(int a = 10,int b = 5)
 }
 void test1()
 {
-	cout << myfunc1() << endl;
+	cout << myfunc1() << endl;//如果不传参，默认使用默认参数，如果传参，使用传入参数
 	cout << myfunc1(20) << endl;
 	cout << myfunc1(20, 30) << endl;
 }
@@ -48,7 +49,9 @@ void test3()
 }
 
 //占位参数:只写一个类型进行占位，调用的时候必须传入占位值
-void func2(int x, int)
+//占位参数的作用：++/--运算符的重载，用于区别前置还是后置
+//占位参数可以有默认参数
+void func2(int x, int)//函数数据类型为void (int, int)
 {
 	cout << "x = " << x << endl;
 }
@@ -63,6 +66,7 @@ int main()
 	//test3();
 
 	func2(199, 10);
+	func2(200);
 	return 0;
 }
 #endif 

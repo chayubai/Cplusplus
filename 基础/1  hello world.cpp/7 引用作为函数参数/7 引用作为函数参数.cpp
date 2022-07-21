@@ -105,7 +105,7 @@ void test3()
 	cout << "ref = " << ref << endl;
 	cout << "ref = " << ref << endl;
 
-	//当函数返回值是引用，那么函数的调用可以作为左值
+	//3、当函数返回值是引用，那么函数的调用可以作为左值
 	func2() = 1000;//对ref进行赋值
 	cout << "ref = " << ref << endl;
 
