@@ -2,7 +2,9 @@
 #include <iostream>
 using namespace std;
 
-//C++有函数重载，会对函数名称进行修饰，导致调用C语义的函数链接失败
+//extern "C" void show();
+
+//C++有函数重载，会对函数名称进行修饰，导致调用C语言的函数链接失败
 
 #include "test.h"
 //C++中调用C语言文件

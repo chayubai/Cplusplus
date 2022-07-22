@@ -6,7 +6,7 @@ using namespace std;
 void test1()
 {
 	const int a = 10;
-	int* p = (int*)&a;//会分配临时内存
+	int* p = (int*)&a;//会分配临时内存。int tmp = a; p = &tmp;
 }
 
 //2、使用普通变量，初始化const变量
@@ -15,7 +15,7 @@ void test2()
 	int a = 10;
 	const int b = a;//会分配内存
 	int* p = (int*)&a;
-	*p = 100;//修改成功
+	*p = 100;//修改成功。说明分配了内存
 	cout << "b = " << b << endl;
 }
 
@@ -44,3 +44,6 @@ int main()
 	//test3();
 	return 0;
 }
+
+//注意：尽量使用const的常量，代替#define定义的常量
+//因为：define出的宏常量，没有数据类型，不重视作用域

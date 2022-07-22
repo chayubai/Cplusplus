@@ -31,7 +31,7 @@ int main()
 
 	struct Person p2;
 	strcpy(p2.name, "李四");
-	DogEating(&p2);
+	DogEating(&p2);//类型检查不够严格
 	return 0;
 }
 //C语言下的封装，缺点：属性和行为分离，类型检查不够严格

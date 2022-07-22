@@ -40,7 +40,7 @@ void test1()
 }
 
 //2、值传递的方式，给函数参数传值
-void doWork(Person p)//Person p = p1 调用拷贝构造函数
+void doWork(Person p)//Person p = p1 即Person p = Person(p1);调用拷贝构造函数
 {
 
 }
@@ -54,13 +54,21 @@ void test2()
 Person doWork2()
 {
 	Person p;
-	return p;//doWork2 = Person temp = p 调用拷贝构造函数
+	return p;//doWork2() = Person temp = p 调用拷贝构造函数
 }
 void test3()
 {
-	Person p1 = doWork2();//doWork2()，先执行Person p;调用无参的构造函数，Person p1 = temp再调用拷贝构造函数
+	Person p1 = doWork2();//先执行doWork2()中的Person p;调用无参的构造函数，Person p1 = temp再调用拷贝构造函数
 }
 
+/*
+	编译器优化后 release版本的代码：
+	void doWork2(Person &p){};
+
+	Person p;
+	doWork2(p);
+
+*/
 int main()
 {
 	//test1();

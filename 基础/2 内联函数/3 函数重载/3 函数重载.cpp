@@ -23,7 +23,17 @@ int myfunc(int a)
 	cout << "myfunc(int a)" << endl;
 	return 0;
 }
-int myfunc(int a, int b)
+int myfunc(double a)
+{
+	cout << "myfunc(int a)" << endl;
+	return 0;
+}
+int myfunc(int a, double b)
+{
+	cout << "myfunc(int a, int b)" << endl;
+	return 0;
+}
+int myfunc(double a,int b)
 {
 	cout << "myfunc(int a, int b)" << endl;
 	return 0;
@@ -72,7 +82,7 @@ void test2()
 void Func(int a)
 {
 	cout << "Func(int a)" << endl;
-}
+}//此函数不要和下面两个函数同时使用，否则调用函数无论如何都会出问题
 void Func(int &a)//int &a = 10，不合法
 {
 	cout << "Func(int &a)" << endl;
@@ -118,7 +128,7 @@ void test4()
 //void func(char a);       //func_c(char a)
 //void func(char a,int b, double c);      //func_cid(char a,int b, double c)
 //底层还是会将重名函数，进行改成不同的名字
-//不同操作系统底层实现大同小异
+//不同编译器底层实现大同小异，如g++
 //_Z4funcv	 void func(); 
 //_Z4funcc	 void func(char a);
 //_Z4funccid  void func(char a,int b, double c);

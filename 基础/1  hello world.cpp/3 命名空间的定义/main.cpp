@@ -44,7 +44,7 @@ void test3()
 //5、命名空间是开放的，可以随时给命名空间添加新的成员
 namespace B//此命名空间会和上面的命名空间B进行合并
 {
-	int m_B = 10;
+	int m_B = 100;
 }
 void test4()
 {

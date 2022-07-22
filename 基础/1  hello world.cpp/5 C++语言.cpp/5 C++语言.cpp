@@ -73,12 +73,12 @@ int main()
 #endif
 
 #if 0
-//5、bool类型扩展，C语言下没有这个类型，C++有bool类型
+//5、bool类型扩展，C语言下没有这个类型，但是C中加入头文件stdbool.h可以使用bool类型，C++有bool类型
 #include <iostream>
 using namespace std;
 int main()
 {
-	//C++语言的真1、假0。非0为真，0为假。且增加了bool类型，该类型的值只能取1或0
+	//C++语言的真1、假0。非0为真，0为假。且增加了bool类型，该类型的值(结果)只能取1或0
 	bool flag = true;
 	cout << "flag(true):" << flag << endl;
 
@@ -112,7 +112,10 @@ int main()
 	(a < b ? a : b) = 50;//C++下返回的是变量，a = 50
 	cout << "a = " << a << endl;
 	cout << "b = " << b << endl;
-	a < b ? a : b = 50;//C++下返回的是变量，即a < b ? a : (b = 50)
+	a > b ? a : b = 50;//C++下返回的是变量，即a < b ? a : (b = 50)
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
+	a < b ? a : b = 50;
 	cout << "a = " << a << endl;
 	cout << "b = " << b << endl;
 	return 0;
@@ -123,21 +126,23 @@ int main()
 //7、const增强
 #include <iostream>
 using namespace std;
-const int m_A = 100;//全局const，和C语言结论一致
+const int m_A = 100;//全局const，和C语言结论一致，间接/直接都不能修改
 int main()
 {
 	//C++语言，const修饰的变量a的值通过指针不能被改变
 	const int a = 10;//局部const  a是真正的常量
+	//a = 29;//直接修改过失败
+
+	int* p = (int*)&a;//这里C++严格类型转换，由于&a是const int*类型，要强转为int*
+	*p = 50;//*p改变的是临时开辟的temp
 	//const存放在符号表中，以key，value键值对的形式对应，即key：a，value：10
 	//C语言中，局部变量，const修饰的变量，编译器会分配内存
 	//C++中，局部变量，const修饰的变量，不会分配内存
 
-	int* p = (int*)&a;//这里C++严格类型转换，由于&a是const int*类型，要强转为int*
-	*p = 50;//*p改变的是临时开辟的temp
-	
 	cout << "a = " << a << endl;
 	//这里a的值没有发生变化
 	cout << "*p = " << *p << endl;
+
 	//*p = 50修改的是什么？
 	//int temp = a;int *p = &temp;
 	//当对const修饰的局部变量取地址的时候，编译器在栈上给变量分配临时内存空间temp

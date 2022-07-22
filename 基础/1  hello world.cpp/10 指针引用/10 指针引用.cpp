@@ -7,7 +7,7 @@ struct teacher
 	char name[20];
 };
 //二级指针
-int get_mem1(struct teacher **tpp)
+int get_mem1(struct teacher **tpp)//结构体指针访问->成员，结构体变量访问.成员 
 {
 	//tpp指向指针的指针，*tpp指针，指向的是Person本体，**tppPerson本体
 	//直接*tpp = (struct teacher*)malloc(sizeof(struct teacher));
@@ -47,7 +47,7 @@ int get_mem2(struct teacher* &tp)//struct teacher* t = NULL;struct teacher* &tp 
 
 	return 0;
 }
-void free_teacher1(struct teacher* &tp)
+void free_teacher2(struct teacher* &tp)
 {
 	if (tp != NULL)
 	{

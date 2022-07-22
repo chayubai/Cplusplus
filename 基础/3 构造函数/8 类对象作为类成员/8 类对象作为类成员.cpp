@@ -38,7 +38,7 @@ class Person
 {
 public:
 	Person(string name, string phoneName, string gameName):m_Name(name), m_Phone(phoneName), m_Game(gameName)
-	{
+	{//Phone m_Phone = m_Phone(phoneName);µ÷ÓÃPhone(string phoneName)
 		cout << "Person(string name, string phoneName, string gameName)..." << endl;
 	}
 	~Person()

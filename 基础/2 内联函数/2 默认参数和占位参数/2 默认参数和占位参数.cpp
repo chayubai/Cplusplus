@@ -14,7 +14,14 @@ void test1()
 	cout << myfunc1(20) << endl;
 	cout << myfunc1(20, 30) << endl;
 }
+
 //注意事项：如果有一个位置有默认参数，那么从这个位置起，从左到右必须有默认值
+//int func(int a, int b = 10, int c)
+//{
+//	retrun a + b + c;
+//}
+//func(20,10);报错
+
 //函数的声明和实现，只能有一个提供默认参数，不可以同时加默认参数
 int myfunc2(int a, int b, int c);
 int myfunc2(int a, int b = 5,int c = 10)

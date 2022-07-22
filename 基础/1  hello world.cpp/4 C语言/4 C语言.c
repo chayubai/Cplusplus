@@ -13,7 +13,7 @@ int main()
 */
 
 /*
-* //2、
+* //2、//返回值,返回类型没有检测。形参类型没有检测，函数调用参数个数没有检测。
 #include <stdio.h>
 func()
 {
@@ -52,7 +52,7 @@ int main()
 */
 
 /*
-* //3、
+* //3、//类型转换不严格
 #include <stdio.h>
 int main()
 {
@@ -76,6 +76,7 @@ struct student
 int main()
 {
 	//C语言结构体变量的定义，要加上关键字struct
+	//student s;
 	struct student s;
 	return 0;
 }
@@ -101,9 +102,11 @@ int main()
 	int a = 10;
 	int b = 20;
 	//可以为=左边的表达式叫做左值 可以为=右边的表达式叫做右值
-	int c = a < b ? a : b;//C语言下，返回的是值，20 = 100是错误的
+	int c = a < b ? a : b;
 	printf("%d\n", c);
 	//C语言的三目运算符，访问的是变量的数值，如果想要当左值，必须访问地址
+	//a > b ? a : b = 50;//C语言下，返回的是值，20 = 50是错误的
+	//(a < b ? a : b) = 50;//C语言下，返回的是值，10 = 50是错误的
 	*(a < b ? &a : &b) = 50;
 	printf("a = %d\n", a);
 	return 0;
@@ -170,16 +173,19 @@ int main()
 const int m_A = 100;//全局变量的cosnt变量，受到常量区保护，运行修改报错
 void test1()
 {
-	//m_A = 200;
+	//m_A = 200;//直接修改失败
 	//int *p = &m_A;
-	//*p = 200;
+	//*p = 200;//间接修改，运行失败
 }
 void test2()
 {
 	const int m_B = 100;//局部变量的const变量，分配到栈上，编译成功
+	//m_B = 200;//直接修改失败
 	int *p = &m_A;
-	*p = 200;
+	*p = 200;//间接修改成功
 	printf("%d\n",m_B);
+	
+	//int a[m_B];//在C语言下，const是伪常量，不可以初始化数组
 }
 int main()
 {

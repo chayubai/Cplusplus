@@ -10,7 +10,7 @@ int main()
 	//::作用域运算符，如果::前面什么都不写，表示全局作用域
 	//全局变量的作用域
 	cout << "全局k = " << ::k << endl;
-	//使用std作用域下的cout
+	//当using namespace std;注释，也可以这样：使用std作用域下的cout
 	std::cout << "全局k = " << ::k << std::endl;
 	return 0;
 }

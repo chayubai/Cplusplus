@@ -58,10 +58,10 @@ void test1()
 //场景2
 void test2()
 {
-	Test t1(10, 20);
+	Test t1(10, 20);//调用有参构造
 	
-	Test t2;
-	t2 = t1;//=操作函数
+	Test t2;//调用无参构造
+	t2 = t1;//调用=操作函数
 }
 
 //场景3
@@ -119,7 +119,7 @@ void test6()
 	cout << "test6 begin..." << endl;
 	Test t1;//t1已经被初始化了。
 	t1 = func2();//所以func2返回的匿名对象不会再次转正，而依然是匿名对象。
-	//所以t1会调用-操作符函数，t1.operator=(匿名对象)，然后编译器会立刻回收掉匿名对象
+	//所以t1会调用=操作符函数，t1.operator=(匿名对象)，然后编译器会立刻回收掉匿名对象
 	t1.printT();
 	cout << "test6 end..." << endl;
 }

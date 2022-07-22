@@ -13,7 +13,7 @@ class Teacher
 public:
 	Teacher(int id, const char* name)//由于接受的"name"是一个字符串常量，类型属于const char*
 	{
-		cout << "~Teacher(int id, const char* name)..." << endl;
+		cout << "Teacher(int id, const char* name)..." << endl;
 		//赋值id
 		m_id = id;
 
@@ -38,7 +38,7 @@ public:
 	}
 	
 #if 0
-	//编译器提供的默认拷贝构造函数
+	//编译器提供的默认拷贝构造函数 - 简单拷贝 - 浅拷贝
 	Teacher(const Teacher& another)
 	{
 		//值的赋值操作
@@ -47,8 +47,8 @@ public:
 	}
 #endif
 
-	//只要成员变量有指针，就需要手动显式的提供一个拷贝构造函数，来完成深拷贝动作
-	Teacher(const Teacher& another)
+	//只要成员变量有堆区开辟的指针，就需要手动显式的提供一个拷贝构造函数，来完成深拷贝动作
+	Teacher(const Teacher& another) // 深拷贝
 	{
 		m_id = another.m_id;//m_name = another.m_name;不可以使用此行代码
 
@@ -88,3 +88,8 @@ int main()
 	test2();
 	return 0;
 }
+//深拷贝与浅拷贝
+//系统认提供的拷贝构造会进行简单的值拷贝
+//如果属性里有指向堆区空间的数据，那么简单的浅拷贝会导致重复释放内存的异常
+//
+//解决上述问题，需要我们自己提供拷贝构造函数，进行深拷贝

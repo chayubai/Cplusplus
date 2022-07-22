@@ -75,11 +75,10 @@ int main()
 }
 #endif
 
-
 class Person
 {
 public:
-	Person()
+	Person()//最好提供无参构造
 	{
 		cout << "调用Person()构造" << endl;
 	}
@@ -95,12 +94,15 @@ public:
 //注意：析构函数会释放，类的成员变量和成员函数，以类为类型的变量，但不会析构引用和堆上的空间
 void test()
 {
-	/*Person a;
+	/*Person a;//栈区开辟
 	Person* p = &a;
 	Person* &b = p;
 	cout << p << endl;
 	cout << b << endl;*/
-	Person* p2 = new Person;
+	Person* p2 = new Person;//堆区开辟
+	//所有new出来的对象，都会返回该类型的指针
+	//malloc返回void* 需要强转
+
 	//相当于：
 	/*Person* person = (Person*)malloc(sizeof(Person));
 	if (person == 0)
@@ -114,8 +116,8 @@ void test()
 
 //malloc 和 new 区别
 //1、malloc 和free 属于库函数，new和delete属于运算符
-//2、malloc不会调用构造函数，new会调用构造函数
-//3、malloc返回void* C++下需要强转，new返回创建的对象的指针
+//2、malloc不会调用构造函数，free不会调用析构函数，new会调用构造函数，delete会调用析构函数
+//3、malloc返回void* C++下需要强转，new返回创建的对象类型的指针
 
 //注意事项：不要用void* 去接受new出来的对象，利用void* 无法调用析构函数
 //因为不知道类型，不知道要释放多大的空间
@@ -136,7 +138,8 @@ void test3()
 
 	//释放数组的时候，需要加[]
 	delete[] p;//这里这样写delete p;此时只会释放一个对象，会报错
-
+	//delete[] p;会有一个对象个数的记录，用于逐个释放数组中的所有对象
+	
 	//假设无参构造函数注释了
 	//如果自定义了有参构造函数，没有显式定义无参构造函数，将开辟以上数据时会报错
 	//因此定义有参构造的时候，建议把无参构造一起写上

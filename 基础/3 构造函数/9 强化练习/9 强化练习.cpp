@@ -83,6 +83,7 @@ int main()
 }
 #endif
 
+//构造中调用构造是危险的行为
 class MyTest
 {
 public:
