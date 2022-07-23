@@ -36,7 +36,7 @@ public:
 	{
 		return m_c;
 	}
-	//成员函数
+	//成员函数，用本身的对象和另一个对象比较
 	bool judgeCube(Cube& another)
 	{
 		//if (m_a == another.getA() && m_b == another.getB() && m_c == another.getC())

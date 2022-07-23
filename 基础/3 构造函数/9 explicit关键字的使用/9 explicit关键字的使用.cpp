@@ -20,6 +20,7 @@ int main()
 	MyString str2 = "abcde";
 	MyString str3(10);
 	MyString str4 = MyString(10);//MyString str4 = 10;
+
 	//explicit关键字的作用：防止使用隐式法初始化对象
 	//MyString str4 = 10;//"10"?这样的初始化会产生误解，explicit修饰起到防止使用隐式法初始化对象
 	

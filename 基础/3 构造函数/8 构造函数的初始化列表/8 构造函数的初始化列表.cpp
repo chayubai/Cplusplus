@@ -18,7 +18,7 @@ public:
 	}*/
 
 	//构造函数的初始化列表，初始化列表可以给任意成员变量初始化
-	Person(int a, int b) :m_A(a), m_B(b)
+	Person(int a, int b) :m_A(a), m_B(b)//
 	{
 		//可以写其他的内容
 	}

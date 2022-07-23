@@ -21,6 +21,7 @@ namespace spaceA {
 int main()
 {
 	//方式一
+	//cout << g_a << endl;//报错，未定义的标识符
 	cout << spaceA::g_a << endl;
 }
 #endif
@@ -28,7 +29,7 @@ int main()
 #if 0
 #include <iostream>
 using namespace std;
-//命名空间的定义必须放在全局外面
+//命名空间的定义必须放在全局作用域下
 namespace spaceA {
 	int g_a = 10;
 }
@@ -91,7 +92,7 @@ int main()
 
 	//方法一
 	spaceB::spaceC::teacher t1;
-	//spaceB::teacher t1;//不可取
+	//spaceB::teacher t1;//不可取，引到底
 
 	//方法二
 	using spaceB::spaceC::teacher;
@@ -101,7 +102,7 @@ int main()
 	//方法三
 	using namespace spaceB::spaceC;
 	struct teacher t3;//可以直接teacher t3;
-	//using namespace spaceB;//不可取
+	//using namespace spaceB;//不可取，，引到底，否则产生二义性
 	//struct teacher t4;
 
 	return 0;
@@ -130,6 +131,7 @@ namespace spaceB {
 			char name[20];
 		};
 	}
+
 	using namespace spaceC;
 }
 int main()

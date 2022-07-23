@@ -107,7 +107,7 @@ int main()
 	int c = a < b ? a : b;
 	cout << c << endl;
 
-	//C++语言的三目运算符，访问的是变量的引用，可以直接当左值
+	//C++语言的三目运算符，返回的是变量的引用，可以直接当左值
 	//返回的是引用
 	(a < b ? a : b) = 50;//C++下返回的是变量，a = 50
 	cout << "a = " << a << endl;
@@ -135,7 +135,7 @@ int main()
 
 	int* p = (int*)&a;//这里C++严格类型转换，由于&a是const int*类型，要强转为int*
 	*p = 50;//*p改变的是临时开辟的temp
-	//const存放在符号表中，以key，value键值对的形式对应，即key：a，value：10
+	//const变量存放在符号表中，以key，value键值对的形式对应，即key：a，value：10
 	//C语言中，局部变量，const修饰的变量，编译器会分配内存
 	//C++中，局部变量，const修饰的变量，不会分配内存
 

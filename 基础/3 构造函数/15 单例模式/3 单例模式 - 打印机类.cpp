@@ -16,6 +16,7 @@ public:
 		m_count++;
 		cout << text << endl;
 	}
+
 	int m_count;
 private:
 	Printer() 
@@ -40,7 +41,7 @@ void test1()
 	//此时编译阶段就会执行：Printer* Printer::printer = new Printer;
 	//此时先调用printer的无参构造，再调用main函数
 
-	//面试题：程序还未运行前，就打印hello world
+	//面试题：如何实现程序还未运行前，就打印hello world
 }
 
 void test2()
@@ -62,8 +63,9 @@ void test2()
 	cout << "打印机使用次数：" << p->m_count << endl;
 	cout << "打印机使用次数：" << p2->m_count << endl;
 
-	//这样是无法访问a和b的，因为对象没有被创建出来，类不具有空间
+	//这样是无法访问m_count的，因为对象没有被创建出来，类不具有空间
 	//cout << "打印机使用次数：" << m_count << endl; 
+	
 	//静态成员变量或函数，不属于对象，可以通过类名::静态成员变量/静态成员函数访问
 	//cout << "打印机使用次数：" << Printer::m_count << endl; 
 

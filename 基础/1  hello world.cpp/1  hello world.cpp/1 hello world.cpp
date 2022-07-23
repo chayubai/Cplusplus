@@ -36,7 +36,7 @@ int main()
 	cout << "hello world" << endl;//等同于cout << "hello world\n"
 	//cout 和endl是在命名空间std中 <<左移操作符，在C++里面实现了功能的改造 - 操作符重载
 	printf("hello world\n");
-	//cout << "..." 可暂时理解为将字符串流向屏幕中
+	//cout << "..." 可暂时理解为将字符串流向屏幕这个对象中
 	//<< 本身为左移操作符，在C++下具有新的含义，用于在cout后拼接输出的内容
 	//类似的如：*可以是乘法操作符，也可以是解引用操作符
 	//endl  - end line 刷新缓冲区并且换行，兼容所有平台（windows的回车使用\r\n，Linux下是\n）

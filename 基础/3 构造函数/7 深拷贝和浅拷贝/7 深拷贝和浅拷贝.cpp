@@ -11,7 +11,7 @@ using namespace std;
 class Teacher
 {
 public:
-	Teacher(int id, const char* name)//由于接受的"name"是一个字符串常量，类型属于const char*
+	Teacher(int id, const char* name)//由于接受的"name"是一个字符串常量，类型属于const char*，如果使用 char*,C++下需要强转
 	{
 		cout << "Teacher(int id, const char* name)..." << endl;
 		//赋值id
@@ -26,7 +26,7 @@ public:
 	~Teacher()
 	{
 		cout << "~Teacher()..." << endl;//用来测验释放m_name
-		if (m_name != NULL)
+		if (m_name != NULL)//当t1调用析构函数，置t1.m_name = NULL时，t2.m_name不会NULL继续释放，报错
 		{
 			free(m_name);
 			m_name = NULL;
@@ -43,7 +43,7 @@ public:
 	{
 		//值的赋值操作
 		m_id = another.m_id;
-		m_name = another.m_name;
+		m_name = another.m_name;//导致两个对象t1和t2的m_name指向同一块空间(地址相同)
 	}
 #endif
 
@@ -56,6 +56,7 @@ public:
 		m_name = (char*)malloc(len + 1);
 		strcpy(m_name, another.m_name);
 	}
+
 	int m_id;
 	char *m_name;
 };
@@ -90,6 +91,7 @@ int main()
 }
 //深拷贝与浅拷贝
 //系统认提供的拷贝构造会进行简单的值拷贝
-//如果属性里有指向堆区空间的数据，那么简单的浅拷贝会导致重复释放内存的异常
+
+//总结：如果属性里有指向堆区空间的数据，那么简单的浅拷贝会导致重复释放内存的异常
 //
 //解决上述问题，需要我们自己提供拷贝构造函数，进行深拷贝

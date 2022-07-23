@@ -96,6 +96,7 @@ protected:
 	string m_Car;
 private:
 	int m_pwd;
+public:
 	void func()
 	{
 		m_name = "zhangsan";//"zhangsan"为const char*类型，隐式转换为string类型 

@@ -48,8 +48,9 @@ public:
 	}
 	void PlayGame()
 	{
-		cout << m_Name << "拿着<<" << m_Phone.m_phoneName << ">>牌手机，玩着：" << m_Game.m_gameName << endl;
+		cout << m_Name << "拿着《" << m_Phone.m_phoneName << "》牌手机，玩着：" << m_Game.m_gameName << endl;
 		//m_Phone.m_phoneName、m_Game.m_gameName不能直接使用m_Phone、m_Game，报错，找不到与之匹配的操作符
+		//包含#include <string>
 	}
 	string m_Name;//姓名
 	Phone m_Phone;//手机

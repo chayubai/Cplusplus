@@ -3,6 +3,7 @@
 using namespace std;
 
 //1、this的含义
+//对于静态成员函数是没有this指针的
 class Person1
 {
 public:
@@ -21,7 +22,7 @@ void test1()
 	p2.func();//this指向p2
 
 	//this可以区分是谁调用函数
-	//this指针指向被调用的成员函数所属的对象
+	//this指针 指向 被调用的成员函数 所属的 对象
 }
 
 //2、this的用法
@@ -30,7 +31,7 @@ class Person2
 public:
 	Person2(int age)
 	{
-		age = age;//这种赋值，发现：两个age是同一个变量
+		age = age;//这种赋值，发现：函数内的三个age是同一个变量，与成员变量age无关
 	}
 	int age;
 };
@@ -45,7 +46,7 @@ class Person3
 public:
 	Person3(int age)
 	{
-		m_Age = age;
+		m_Age = age;//当可以区分形参和成员变量时，可以不加this
 	}
 	int m_Age;//member_age
 };
@@ -66,7 +67,7 @@ public:
 	//this指针，隐式加在每个成员函数中
 	bool compareAge(Person & p)//compareAge(Person *this,Person & p)
 	{
-		if (age == p.age)//this->age == p.age
+		if (age == p.age)//this->age == p.age//当可以区分形参和成员变量时，可以不加this
 		{
 			return true;
 		}
@@ -85,11 +86,13 @@ public:
 	//	return *this;//this指针指向调用对象，*this即对象本身
 	//}
 
+	//如果返回类型改为非引用类型，结果？
 	Person personAddPerson(Person& p)
 	{
 		this->age += p.age;
 		return *this;//this指针指向调用对象，*this即对象本身//Person temp = *this
 	}
+
 	int age;
 };
 void test4()
@@ -123,7 +126,7 @@ void test4()
 	//p1.personAddPerson(p2).personAddPerson(p2).personAddPerson(p2);
 	//Person temp1 = *this = p1.personAddPerson(p2)
 	//Person temp2 = *this = p1.personAddPerson(p2)
-	//Person temp3 = *this = p1.personAddPerson(p2)，每次返回的结果都为临时变量temp
+	//Person temp3 = *this = p1.personAddPerson(p2)，每次返回的结果都为临时变量，只有第一次进行了相加
 }
 
 int main()

@@ -119,7 +119,7 @@ public:
 	}
 	void setCenter(Point c)
 	{
-		m_center = c;
+		m_center = c;//自定义类之间是可以直接赋值的
 	}
 	Point getCenter()
 	{

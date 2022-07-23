@@ -2,8 +2,9 @@
 #if 0
 #include <iostream>
 using namespace std;//如果不添加这一行代码，cout和endl会报“未声明的标识符”
-//iostream 提供了命名空间的东西，但是没有定义全局的标准的命名空间std，
-//即需要使用cout，需要手动加入命名空间，要指明是那个命名空间的cout
+//iostream 提供了命名空间这个东西的机制，但是没有直接定义cout、endl...
+//而是将这些定义在命名空间std中
+//即需要使用cout，需要手动加入命名空间std，要指明是那个命名空间的cout
 //由于方便后续代码中要使用命名空间std下的变量，于是告诉编译器使用命名空间std
 int main()
 {
@@ -11,6 +12,8 @@ int main()
 
 	return 0;
 }
+//注意：iostream里面定义了命名空间，命名空间定义了类、变量、函数等内容
+//标准命名空间std定义了cout对象的类、endl对象的类等内容
 #endif 
 
 #if 0

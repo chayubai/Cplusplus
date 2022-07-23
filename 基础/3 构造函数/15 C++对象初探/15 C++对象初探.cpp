@@ -18,6 +18,7 @@ public:
 
 int Person::m_b = 0;
 
+//只有非静态成员变量属于类对象
 void test1()
 {
 	Person p;
@@ -28,7 +29,7 @@ void test1()
 
 	//成员变量和成员函数是分开存储的
 
-	//类的大小，也struct大小结算相同，编译器默认对齐数为8
+	//类的大小，也和struct大小计算相同，编译器默认对齐数为8
 }
 int main()
 {

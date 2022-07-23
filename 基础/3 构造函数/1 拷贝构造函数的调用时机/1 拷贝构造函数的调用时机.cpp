@@ -31,7 +31,7 @@ public:
 	int m_age;
 };
 
-//1、用已经创建好的对象来初始化新对象
+//1、用已经创建好的对象来初始化新对象，会调用拷贝构造函数
 void test1()
 {
 	Person p1(18);
@@ -39,10 +39,10 @@ void test1()
 	cout << "p2的年龄：" << p2.m_age << endl;
 }
 
-//2、值传递的方式，给函数参数传值
+//2、值传递的方式，给函数参数传值，会调用拷贝构造函数
 void doWork(Person p)//Person p = p1 即Person p = Person(p1);调用拷贝构造函数
 {
-
+	//由此可知p1和p是独立的两个对象，互不影响
 }
 void test2()
 {
@@ -50,8 +50,8 @@ void test2()
 	doWork(p1);
 }
 
-//3、以值的方式，返回局部对象
-Person doWork2()
+//3、以值的方式，返回局部对象，会调用拷贝构造函数
+Person doWork2()//这里不是返回局部对象的引用
 {
 	Person p;
 	return p;//doWork2() = Person temp = p 调用拷贝构造函数
@@ -62,7 +62,7 @@ void test3()
 }
 
 /*
-	编译器优化后 release版本的代码：
+	编译器优化后 release版本的代码：查看结果
 	void doWork2(Person &p){};
 
 	Person p;

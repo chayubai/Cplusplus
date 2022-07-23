@@ -12,7 +12,7 @@ public:
 	}
 	
 	//常函数：修饰成员函数中的this指针，让指针指向的值不可以修改
-	void showPerson() const
+	void showPerson() const // const Person* const this
 	{
 		//m_age = 100;//报错：表达式必须是可修改的左值，即指针指向的值，this->m_age不可以修改
 
@@ -20,14 +20,14 @@ public:
 		//this->NULL;//this是指针常量，指针的指向不可以修改，而指针指向的值可以修改
 		cout << "Person age = " << this->m_age << endl;
 
-		m_A = 100;//不会报错
+		m_A = 100;//，如果希望m_A可修改，而不会报错
 	}
 
 	//对于showPerson()的功能，只允许读，不允许写，如何实现
 	//用const修饰指针常量，即const Person* const this
 	//防止通过this->成员变量 = 值，访问成员变量
 
-	//如果在Person* const this前面加const修饰呢？
+	//如何在Person* const this前面加const修饰呢？
 	//通过在函数名的后面加const
 
 	void func()
