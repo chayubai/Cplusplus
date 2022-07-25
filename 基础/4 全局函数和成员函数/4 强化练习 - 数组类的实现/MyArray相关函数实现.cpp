@@ -35,6 +35,7 @@ MyArray::MyArray(const MyArray& arr)
 	this->m_Size = arr.m_Size;
 	//深拷贝
 	this->pAdress = new int[arr.m_Capacity];
+	//将数组元素复制一份
 	for (int i = 0; i < m_Size; i++)
 	{
 		this->pAdress[i] = arr.pAdress[i];

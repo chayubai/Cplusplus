@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+#if 0
 //1、this的含义
 //对于静态成员函数是没有this指针的
 class Person1
@@ -135,45 +135,67 @@ int main()
 	//test3();
 	test4();
 }
+#endif
 
-//class Test
-//{
-//public:
-//	Test(int i)
-//	{
-//		this->mI = i;
-//	}
-//	int getI()//实际上是int getI(Test *const this)
-//	{
-//		//this->mI = 100;//没有报错，说明this指针不是const Test*类型
-//		//this++;//报错，说明this指针是常指针，Test* const 类型
-//		//由于this可以修改mI的值，如何让this不能修改？--int getI()const
-//		return this->mI;
-//	}
-//#if 0
-//	int getI() const//成员函数尾部出现const，修饰的是this指针
-//	{
-//		this->mI = 100;//报错，说明this指针不是const Test*类型
-//		return this->mI;
-//	}
-//	//static成员函数，只能返回static成员变量
-//	static int s_getI()
-//	{
-//		//普通成员变量，是属于某个对象的，而static成员变量，没有this指针
-//		//return this->mI;//报错
-//		//return mI;//报错
-//		return s_k;//正确
-//	}
-//#endif
-//private:
-//	int mI;
-//	static int s_k;
-//};
-//int Test::s_k = 0;
-//int main()
-//{
-//	Test t1(10);//即Test(&t1,10);
-//	t1.getI();//即getI(&t1);
-//
-//	return 0;
-//}
+class Test
+{
+public:
+	Test(int i)//Test(const Test* this,int i)
+	{
+		mI = i;//this->mI = i;
+	}
+	int getI()//实际上是int getI(Test *const this)
+	{
+		//this->mI = 100;//没有报错，说明this指针不是const Test*类型
+		//this++;//报错，说明this指针是常指针，Test* const 类型
+		//由于this可以修改mI的值，如何让this不能修改？ -- int getI()const
+		return mI;//return this->mI;
+	}
+#if 0
+	int getI() const//成员函数尾部出现const，修饰的是this指针
+	{
+		this->mI = 100;//报错，防止this指针修改其他内容，即const Test* const this
+		return this->mI;
+	}
+	//static成员函数，只能返回static成员变量
+	static int s_getI()
+	{
+		//普通成员变量，是属于某个对象的，而static成员变量，没有this指针
+		//return this->mI;//报错
+		//return mI;//报错
+		return s_k;//正确
+	}
+#endif
+private:
+	int mI;
+	static int s_k;
+};
+
+int Test::s_k = 0;
+
+/*
+struct Test
+{
+	int mI;
+};
+void Test_init(Test* pthis,int i)
+{
+	pthis->mI = i;
+}
+int Test_getI(struct Test * pthis)
+{
+	return pthis->mI;
+}
+*/
+
+int main()
+{
+	Test t1(10);//即Test(&t1,10);
+	Test t2(20);//即Test(&t2,10);
+	//成员函数通过this指针，调用各自对象的属性/方法
+
+	t1.getI();//即getI(&t1);
+	t2.getI();//即getI(&t2);
+
+	return 0;
+}

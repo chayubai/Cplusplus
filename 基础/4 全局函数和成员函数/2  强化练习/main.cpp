@@ -29,7 +29,7 @@ int main()
 	cout << endl;
 
 	MyArray array3;
-	array3 = array1;
+	array3 = array1;//调用默认的=操作符函数
 	cout << "array3:";
 
 	for (int i = 0; i < array3.getLen(); i++)
@@ -37,5 +37,6 @@ int main()
 		cout << array3.getData(i) << " ";
 	}
 	cout << endl;
+
 	return 0;
 }

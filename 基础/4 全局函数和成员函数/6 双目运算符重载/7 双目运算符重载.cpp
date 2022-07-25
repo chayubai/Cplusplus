@@ -43,8 +43,12 @@ int main()
 	c1.printComplex();
 	c2.printComplex();
 
-	(c1 += c2) += c2;
+	(c1 += c2) += c2;//c1.operator(c2) = c1  .operator(c2)
 	c1.printComplex();
 
 	return 0;
 }
+
+//注意：
+//全局函数和成员函数 操作符重载都能实现连+=/-=操作，返回引用
+//而只有成员函数 操作符重载才能实现连+/-操作，返回类名

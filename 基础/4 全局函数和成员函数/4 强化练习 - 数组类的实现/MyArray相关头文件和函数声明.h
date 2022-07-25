@@ -7,7 +7,7 @@ class MyArray
 {
 public:
 	//无参构造函数，用户没有指定容量，则初始化为100
-	MyArray();
+	MyArray();//右键点击函数名，“快速操作或重构” - “创建声明/定义”
 
 	//有参构造函数，用户指定容量初始化
 	explicit MyArray(int capacity);//explicit防止MyArray arr = 100的创建方式

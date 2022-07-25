@@ -8,10 +8,10 @@ public:
 	//无参构造函数
 	MyArray();
 
-	//有参构造函数，用户指定长度初始化
+	//有参构造函数，用户指定长度开辟数组大小
 	MyArray(int len);
 
-	//用户操作接口
+	//拷贝构造函数 - 深拷贝
 	MyArray(const MyArray& another);	
 
 	//根据位置添加元素
@@ -29,6 +29,6 @@ public:
 	~MyArray();
 private:
 	int len;
-	int* space;
+	int* space;//用于维护堆上开辟的空间
 };
 

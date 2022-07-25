@@ -101,7 +101,8 @@ public:
 		m_b = b;
 	}
 
-	//获取私有的静态成员变量，需要设计static的成员方法，返回引用
+	//获取私有的  静态成员变量  ，需要设计static的成员方法
+	//如果函数当左值，返回引用
 	static int& getC()
 	{
 		return m_c;
@@ -127,8 +128,11 @@ int AA::m_d = 200;
 
 int main()
 {
-	AA a1(10, 20);
+	AA a1(10, 20);//a1.m_a和a1.m_b与a2.m_a和a2.m_b互相独立的
+	AA a2(20, 40);
+	//static变量是共享的
 	cout << a1.getC() << endl;
+	cout << a2.getC() << endl;
 
 	//通过类名访问public的静态成员变量
 	AA::m_d = 200;
@@ -143,6 +147,8 @@ int main()
 	cout << a1.getD() << endl;
 
 	//通过类名访问公有get成员函数，来访问private的成员变量
+	cout << AA::getC() << endl;
+
 	AA::getC() = 300;//返回引用可作左值，方便对变量的修改
 	//通过对象.公有成员函数，来访问private的成员变量
 	

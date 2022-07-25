@@ -18,6 +18,8 @@ public:
 		m_a = a;
 		int len = strlen(name);
 		m_name = (char*)malloc(sizeof(len + 1));
+		if (m_name == NULL)
+			return;
 		strcpy(m_name, name);
 	}
 	void printT()
@@ -26,9 +28,9 @@ public:
 	}
 	~Test()
 	{
-		cout << "~Test()" << endl;
 		if (m_name != NULL)
 		{
+			cout << "~Test()" << endl;
 			free(m_name);
 			m_name = NULL;
 		}
@@ -42,7 +44,7 @@ private:
 void test1()
 {
 	Test* tp = (Test*)malloc(sizeof(Test));
-	//必须设计一个setAB(),来初始化m_a、m_name
+	//必须设计一个显式的init(),来初始化m_a、m_name
 	//tp->printT();
 	if (tp != NULL)
 	{
@@ -54,7 +56,8 @@ void test1()
 //C++语言中，堆上创建对象
 void test2()
 {
-	Test* tp = new Test(10, "zhangsan");//触发有参构造函数        tp = new Test;//触发无参构造函数，而不是这个tp = new Test();
+	Test* tp = new Test(10, "zhangsan");//触发有参构造函数    
+										//tp = new Test;触发无参构造函数，而不是这个tp = new Test();
 	tp->printT();
 
 	//注意：tp是栈上开辟的空间，但tp指向的空间是堆上开辟的

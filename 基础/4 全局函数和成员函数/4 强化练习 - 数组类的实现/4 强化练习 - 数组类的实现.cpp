@@ -3,7 +3,10 @@
 
 void test1()
 {
+#if 0
+	//栈区创建数组
 	MyArray arr;//测试无参构造
+	
 	for (int i = 0; i < 10; i++)
 	{
 		arr.pushBack(i);
@@ -13,10 +16,27 @@ void test1()
 		cout << arr.getData(i) << " ";
 	}
 	cout << endl;
+#endif
+
+	//堆区创建数组
+	MyArray* arr = new MyArray;
+
+	for (int i = 0; i < 10; i++)
+	{
+		arr->pushBack(i);
+	}
+	for (int i = 0; i < arr->getSize(); i++)
+	{
+		cout << arr->getData(i) << " ";
+	}
+	cout << endl;
+
+	delete arr;
 }
 
 void test2()
 {
+#if 0
 	MyArray arr;
 	for (int i = 0; i < 10; i++)
 	{
@@ -34,11 +54,37 @@ void test2()
 		cout << arr2.getData(i) << " ";
 	}
 	cout << endl;
+#endif
+
+	MyArray *arr = new MyArray(30);
+	for (int i = 0; i < 10; i++)
+	{
+		arr->pushBack(i);
+	}
+	for (int i = 0; i < arr->getSize(); i++)
+	{
+		cout << arr->getData(i) << " ";
+	}
+	cout << endl;
+
+	//注意：MyArray *arr2 = arr;//这个是声明一个指针，和arr执行的地址相同，不会调用拷贝构造
+	//测试拷贝构造，或者MyArray * arr2 = new MyArray(*arr);
+	MyArray arr2 = *arr;//*arr找到对象，构造函数返回本体
+
+	for (int i = 0; i < arr2.getSize(); i++)
+	{
+		cout << arr2.getData(i) << " ";
+	}
+	cout << endl;
+
+	delete arr;
 }
 
 void test3()
 {
 	MyArray arr;
+	//MyArray* arr = new MyArray;
+
 	for (int i = 0; i < 10; i++)
 	{
 		arr.pushBack(i);
@@ -68,6 +114,7 @@ void test3()
 void test4()
 {
 	MyArray arr;
+	//MyArray* arr = new MyArray;
 	for (int i = 0; i < 10; i++)
 	{
 		arr.pushBack(i);

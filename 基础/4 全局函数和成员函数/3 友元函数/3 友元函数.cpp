@@ -4,7 +4,7 @@ using namespace std;
 
 #include <string>
 
-//友元：可以是全局函数、某个类的成员函数、整个类。
+//友元：可以是全局函数、某个类的成员函数、整个类。但是会破坏类的封装特性
 //让一个全局函数，成员函数，整个类，可以称为一个类的好朋友，从而可以直接访问私有属性
 //而不需要使用get、set方法
 
@@ -35,7 +35,7 @@ void goodGay(Building *building)
 
 int main()
 {
-	Building building;
+	Building building;//栈上开辟或者堆上开辟Building * building = new Building;
 	goodGay(&building);
 	return 0;
 }
@@ -43,9 +43,9 @@ int main()
 #if 0
 #include <cmath>
 
-class Point;//声明Point类
+class Point;//声明Point类，由于后面有提前用到该类
 
-class PointManager
+class PointManager//声明PointManager类和PointDistance方法，由于后面要提前用到该类
 {
 public:
 	double PointDistance(Point& p1, Point& p2);//声明Point类，否则这里用不了
@@ -68,11 +68,11 @@ public:
 		return this->y;
 	}
 	//第二种
-	//友元函数声明，类外部的全局函数可以访问类的成员
+	//友元函数声明，类外部的全局函数可以访问类的（私有）成员
 	//friend double PointDistance(Point& p1, Point& p2);//friend声明外部全局函数为类的友元函数
 
-	//第三种，声明指定类的成员方法为友元函数
-	friend double PointManager::PointDistance(Point& p1, Point& p2);
+	//第三种，声明指定类的成员方法为友元函数。加作用域
+	friend double PointManager::PointDistance(Point& p1, Point& p2);//声明PointManager类和PointDistance方法，否则这里用不了
 private:
 	int x;
 	int y;
@@ -105,7 +105,7 @@ double PointDistance(Point& p1, Point& p2)
 #endif
 
 //第三种
-//PointManager类的成员函数作为友元函数 - 在类外实现
+//PointManager类的成员函数作为友元函数 - 在类外实现，不能放在类内实现，否则需要用到x和y
 double PointManager::PointDistance(Point& p1, Point& p2)
 {
 	double dis;

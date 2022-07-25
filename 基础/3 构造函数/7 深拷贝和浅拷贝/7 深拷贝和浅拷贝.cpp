@@ -26,7 +26,8 @@ public:
 	~Teacher()
 	{
 		cout << "~Teacher()..." << endl;//用来测验释放m_name
-		if (m_name != NULL)//当t1调用析构函数，置t1.m_name = NULL时，t2.m_name不会NULL继续释放，报错
+		if (m_name != NULL)//当t2调用析构函数，此时指向的空间归还给了操作系统，置t2.m_name = NULL时。
+			//当t2.m_name不会NULL继续释放不属于自己的空间，报错
 		{
 			free(m_name);
 			m_name = NULL;

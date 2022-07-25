@@ -3,13 +3,14 @@
 using namespace std;
 
 #include <string>
-class Building;//声明Building类
+class Building;//声明Building类,防止下面提前使用报错
 
 class GoodGay
 {
 public:
 	GoodGay();
 	void visit();
+private:
 	Building* m_building;//声明Building类，否则这里用不了
 };
 
@@ -63,10 +64,14 @@ public:
 	void printA()
 	{
 		B objB(100);
-		cout << "objB.b" << objB.b << endl;
+		cout << "objB.b" << objB.b << endl;//访问类B的私有成员，对类A在类B中声明友元类
 		cout << "a = " << this->a << endl;
 	}
-	//声明友元类,友元的特性是单向的，在A类里面声明了友元类B，该B类可以使用A类，而A类不能使用B类
+
+	//注意：
+	// (1)友元关系不能被继承。
+	// (2)声明友元类,友元的特性是单向的，在A类里面声明了友元类B，该B类可以使用A类的私有成员，而A类不能使用B类的私有成员
+	// (3)友元关系不具有传递性。若类B是类A的友元类C是B的友元,类C不一定是类A的友元,同样要看类中是否有相应的声明。
 	friend class B;
 private:
 	int a;
@@ -82,7 +87,7 @@ public:
 	void printB()
 	{
 		A objA(100);
-		cout << "objA.a" << objA.a << endl;
+		cout << "objA.a" << objA.a << endl;//访问类A的私有成员，对类B在类A中声明友元类
 		cout << "b = " << this->b << endl;
 	}
 	friend class A;

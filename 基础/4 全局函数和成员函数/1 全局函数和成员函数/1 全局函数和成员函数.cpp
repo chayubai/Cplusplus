@@ -26,6 +26,7 @@ public:
 	//2、局部的成员函数
 	Test TestAdd1(Test& another)
 	{
+		//同类中之间（this和another）无私处
 		Test temp(this->a + another.a, this->b + another.b);
 		return temp;
 	}
@@ -36,8 +37,19 @@ public:
 		this->a += another.a;
 		this->b += another.b;
 	}
-	//4、连加
-	Test& TestAdd3(Test& another)
+	//连+=
+	/*
+	Test TestAdd3(Test& another)
+	{
+		this->a += another.a;
+		this->b += another.b;
+		return *this;//Test tmp = *this;
+		//t1.TestAdd3(t2).TestAdd3(t2);
+		//第一次t1.TestAdd3(t2)返回的了是tmp
+		//第二次tmp.TestAdd3(t2)
+	}
+	*/
+   	Test& TestAdd3(Test& another)
 	{
 		this->a += another.a;
 		this->b += another.b;
@@ -51,8 +63,8 @@ private:
 //1、在全局提供一个“两个Test相加的函数”
 Test TestAdd1(Test& t1, Test& t2)
 {
-	Test temp(t1.getA() + t2.getA(), t1.getB() + t2.getB());
-	return temp;
+	Test t(t1.getA() + t2.getA(), t1.getB() + t2.getB());
+	return t;//调用拷贝构造函数，Test tmp = t;
 }
 
 void test1()
@@ -61,7 +73,7 @@ void test1()
 	Test t1(10, 20);
 	Test t2(100, 200);
 
-	Test t3 = TestAdd1(t1, t2);
+	Test t3 = TestAdd1(t1, t2);//Test t3 = tmp;
 
 	t3.printT();
 }

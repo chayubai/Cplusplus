@@ -50,6 +50,7 @@ MyArray::~MyArray()
 }
 void MyArray::setData(int index, int data)
 {
+	//需要考虑index是否越界
 	if (this->space != NULL)
 	{
 		this->space[index] = data;

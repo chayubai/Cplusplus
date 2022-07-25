@@ -163,34 +163,36 @@ class A
 public:
 	A(const char* name)
 	{
+		cout << "A(const char* name)" << endl;
 		int len = strlen(name);
 		m_name = (char*)malloc(sizeof(len + 1));
 		strcpy(m_name, name);
 	}
 	void printT()
 	{
-		cout << "printT():" << m_name << endl;//这里有问题
+		cout << "printT():" << m_name << endl;//这个没有问题
 	}
 	~A()
 	{
-		cout << "~Test()" << endl;
 		if (m_name != NULL)
 		{
+			cout << "~A()" << endl;
 			free(m_name);
 			m_name = NULL;
 		}
 	}
+private:
 	char* m_name;
 };
 int main()
 {
 	A * p = new A("zs");
 	p->printT();
+
 	if (p != NULL)
 	{
 		delete p;
 		p = NULL;
 	}
-	//cout << a.m_name << endl;//这里有问题
 	return 0;
 }

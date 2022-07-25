@@ -57,7 +57,7 @@ void test2()
 {
 	Person p1(10, 20);
 	//如果返回值void，则不能实现连续<<操作
-	cout << p1 << endl;//链式编程，返回类型为引用，且返回值为cout
+	cout << p1 << "hello" << endl;//链式编程，返回类型为引用，且返回值为cout
 }
 
 int main()

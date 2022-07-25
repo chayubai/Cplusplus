@@ -7,6 +7,7 @@ void test1()
 {
 	//开辟变量空间
 	int* p = (int*)malloc(sizeof(int));
+	//判断开辟是否成功
 	*p = 10;
 	if (p != NULL)
 	{
@@ -15,6 +16,7 @@ void test1()
 	}
 	//开辟数组空间
 	int* array_p = (int*)malloc(sizeof(int)*10);
+	//判断开辟是否成功
 	for (int i = 0; i < 10; i++)
 	{
 		array_p[i] = i + 1;
@@ -126,13 +128,17 @@ void test()
 //1、malloc 和free 属于库函数，new和delete属于运算符
 //2、malloc不会调用构造函数，free不会调用析构函数，new会调用构造函数，delete会调用析构函数
 //3、malloc返回void* C++下需要强转，new返回创建的对象类型的指针
+//4、malloc开辟的空间，默认没有初始化，需要显式提供init方法对空间进行初始化
+//5、new开辟空间，会调用构造函数进行初始化
 
 //注意事项：不要用void* 去接受new出来的对象，利用void* 无法调用析构函数
 //因为不知道类型，不知道要释放多大的空间
 void test2()
 {
-	void* p = new Person;
+	void* p = new Person;//创建对象，并调用无参构造
 	delete p;//不会触发析构函数
+
+	//注意：C++new关键字类似与Java语言的new关键字
 }
 
 //利用new开辟数组

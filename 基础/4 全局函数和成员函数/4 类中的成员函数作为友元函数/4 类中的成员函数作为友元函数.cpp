@@ -12,6 +12,7 @@ public:
 	GoodGay();
 	void visit();//友元函数可以访问building的私有成员
 	void visit2();//非友元函数不可以访问building的私有成员
+private:
 	Building* m_building;//声明Building类，否则这里用不了
 };
 
@@ -53,7 +54,6 @@ void test()
 	GoodGay gg;
 	gg.visit();
 	gg.visit2();
-
 }
 
 int main()

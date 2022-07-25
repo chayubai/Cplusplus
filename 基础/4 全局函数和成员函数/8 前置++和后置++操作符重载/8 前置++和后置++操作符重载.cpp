@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+#include <string>
 class MyInter
 {
-	friend ostream& operator<<(ostream& cout, MyInter& myInt);
+	friend ostream& operator<<(ostream& cout, const MyInter& myInt);
 
 public:
 	MyInter()
@@ -30,7 +30,7 @@ public:
 	/*MyInter operator++()
 	{
 		this->m_num++;
-		return *this;
+		return *this;//MyInter temp = *this;
 	}*/
 
 	//成员函数实现:后置++重载
@@ -50,7 +50,9 @@ private:
 	int m_num;
 };
 
-ostream& operator<<(ostream& cout, MyInter& myInt)
+//这里将MyInter& myInt改为const MyInter& myInt
+//否则 VS2019<<重载对后置++的输出会报错
+ostream& operator<<(ostream& cout, const MyInter& myInt)
 {
 	cout << myInt.m_num;
 	return cout;
@@ -86,10 +88,11 @@ void test3()
 	MyInter myInt;
 	//如果返回自定义类型，则结果？
 
-	cout << ++(++myInt) << endl;// 2
+	cout << ++(++myInt) << endl;// 2  ++myInt返回temp。++(++myInt) = ++(temp)
 	cout << myInt << endl;// 1
 
 	//因为myInt第一次++后，不会再++，但是++(++myInt)最终的结果会返回最后一个临时变量temp的值
+	//第一次++后，后面++都是对临时变量进行++
 
 	//正常来说：重载前置++操作符需要返回引用
 	//但是为什么返回对象的类型，会报错？
@@ -98,12 +101,12 @@ void test3()
 void test4()
 {
 	MyInter myInt;
-	myInt++;
+
 	cout << myInt++ << endl;
 	cout << myInt << endl;
 
-	//正常来说：重载后置++操作符需要返回类的对象。但是为什么会报错？
-	//而返回对象的类型，虽然不能myInt++++连续++，但是不会报错，为什么？
+	//正常来说：重载后置++操作符不能返回类的对象。但是为什么不会报错？
+	//而应该返回对象的类型，这样才能实现myInt++++不能连续++，但是却会报错，为什么？
 }
 
 int main()
@@ -116,4 +119,4 @@ int main()
 }
 
 //注意：前置++/--，比后置++/--，效率高，因为前置++/--返回引用，没有创建对象
-//后置++/--，返回对象的类型，会调用拷贝构造函数，创建临时对象
+//后置++/--，返回对象的类型，会调用拷贝构造函数，创建临时对象，即匿名对象

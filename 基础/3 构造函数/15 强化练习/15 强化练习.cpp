@@ -32,7 +32,7 @@ public:
 	{
 		return total_weight;
 	}
-	Goods *next;
+	Goods *next;//用链表存储货物
 private:
 	int weight;//货物重量
 	static int total_weight;//仓库总重量
@@ -47,7 +47,7 @@ void buy(Goods* &head,int w)
 		head = new_goods;
 	}
 	else
-	{
+	{//头插
 		new_goods->next = head;
 		head = new_goods;
 	}
@@ -60,10 +60,10 @@ void sale(Goods* &head)
 		return;
 	}
 	else
-	{
+	{//头删
 		Goods* temp = head;
 		head = head->next;
-		delete temp;
+		delete temp;//触发~Goods()
 		cout << "saled..." << endl;
 
 	}

@@ -10,7 +10,7 @@
 //(1 < 2 ? a : b) = 100;
 //(1 < 2 ? 10 : 20) = 100;
 
-//5、const int a;在C++编译器中是否需要初始化，为什么？
+//5、const int a;在C++编译器中是否需要初始化(必须初始化)，为什么？
 //const int a = 10;
 //int *p = (int*)&a;
 //*p = 20;
@@ -61,6 +61,6 @@ int main()
 	int a = 10;
 	int& rNum = a;
 	int& ra = rNum;
-	cout << "ref = " << ra << endl;
+	cout << "re = " << ra << endl;
 	return 0;
 }

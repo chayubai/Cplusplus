@@ -8,6 +8,13 @@ int getA()
 	int a = 10;
 	return a;//int tmp = a;
 }
+char* getC(int n)
+{
+	char* p = NULL;
+	p = (char*)malloc(n);
+
+	return p;//char* tmp = p;
+}
 int& getA1()
 {
 	int a = 10;
@@ -15,7 +22,7 @@ int& getA1()
 }
 int& getA2()
 {
-	static int a = 10;
+	static int a = 10;//或者在堆区上创建变量
 	return a;//int &tmp = a;
 }
 int main()
@@ -24,8 +31,8 @@ int main()
 	main_a = getA1();//main_a = tmp;//赋值操作，数值拷贝
 	cout << "main_a = " << main_a << endl;
 #if 0
-	//引用作为返回类型，不要返回局部变量的引用
-	int& main_a_re = getA1();//int& main_a_re = tmp;
+	//引用作为返回类型，不要返回局部变量的引用，
+	int& main_a_re = getA1();//int& main_a_re = tmp;getA1()相当于返回a
 	cout << "main_a_re = " << main_a_re << endl;
 	cout << "main_a_re = " << main_a_re << endl;
 #endif

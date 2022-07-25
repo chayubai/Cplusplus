@@ -2,9 +2,16 @@
 #include <iostream>
 using namespace std;
 #if 0
+//const 修饰引用，一般和const修饰指针的用途是一样的。都是作为函数参数
+//保证该参数是只读的，在函数内部改变不了外部的值
+void Print(const int& re)
+{
+	cout << "re = " << re << endl;
+}
 int main()
 {
 	const int a = 10;
+	//int &re = a;//报错
 	//1、如果想对一个常量进行引用，必须是一个const引用
 	const int& re1 = a;
 

@@ -25,7 +25,7 @@ int main()
 	MY_FUNC_P pf2 = NULL;
 	pf2 = func;
 	pf2(10, 20);
-
+	//3¡¢
 	void (*pf3)(int, int) = NULL;
 	pf3 = func;
 	pf3(10, 20);

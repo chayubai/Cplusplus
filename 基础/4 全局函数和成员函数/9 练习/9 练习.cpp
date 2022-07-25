@@ -10,13 +10,28 @@
 //4、简述操作符重载的规则
 
 //5、课程中自定义数组，实现<<操作符，实现取值操作符[]
-
-//array[i] = 10;
-//cout << array << endl;
-//cin >> array
+//array[i] = 10;   //重载[]
+//cout << array << endl;  //重载<<
+//cin >> array;  //重载>>
 //cout << array[i] << endl;
-//
-//==
-//!=
-//array1 == array2;
-//array1 != array2;
+
+//array1 == array2;  //重载==
+//array1 != array2;  //重载!=
+
+#if 0
+#include <iostream>
+using namespace std;
+
+struct A
+{
+	int age;
+};
+int main()
+{
+	A a1 = { 10 };
+	A a2 = { 20 };
+
+	A a3 = a1 + a2;//也需要重载+操作符
+	return 0;
+}
+#endif
