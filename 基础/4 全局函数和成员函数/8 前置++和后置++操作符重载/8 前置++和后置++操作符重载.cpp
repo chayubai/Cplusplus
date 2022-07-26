@@ -23,7 +23,7 @@ public:
 	MyInter& operator++()
 	{
 		this->m_num++;
-		return *this;//返回本身
+		return *this;//返回本身,没有创建新对象，但是对对象引用了别名temp
 	}
 
 	//3、返回类型为MyInter
@@ -43,7 +43,7 @@ public:
 		MyInter temp = *this;
 		//再++
 		this->m_num++;
-		return temp;//返回为之前记录的值,调用拷贝构造函数
+		return temp;//返回为之前记录的值,调用拷贝构造函数，创建匿名对象
 	}
 
 private:
@@ -91,11 +91,11 @@ void test3()
 	cout << ++(++myInt) << endl;// 2  ++myInt返回temp。++(++myInt) = ++(temp)
 	cout << myInt << endl;// 1
 
-	//因为myInt第一次++后，不会再++，但是++(++myInt)最终的结果会返回最后一个临时变量temp的值
-	//第一次++后，后面++都是对临时变量进行++
-
 	//正常来说：重载前置++操作符需要返回引用
 	//但是为什么返回对象的类型，会报错？
+
+	//因为myInt第一次++后，不会再++，但是++(++myInt)最终的结果会返回最后一个临时变量temp的值
+	//第一次++后，后面++都是对临时变量进行++
 }
 
 void test4()
@@ -107,6 +107,8 @@ void test4()
 
 	//正常来说：重载后置++操作符不能返回类的对象。但是为什么不会报错？
 	//而应该返回对象的类型，这样才能实现myInt++++不能连续++，但是却会报错，为什么？
+
+	//在<< 重载函数中的参数改为const MyInter & myInt
 }
 
 int main()

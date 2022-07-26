@@ -32,6 +32,7 @@ void test1()
 	cout << endl;
 
 	delete arr;
+	arr = NULL;
 }
 
 void test2()
@@ -78,6 +79,7 @@ void test2()
 	cout << endl;
 
 	delete arr;
+	arr = NULL;
 }
 
 void test3()
@@ -128,7 +130,7 @@ void test4()
 	//arr[0] = 100;
 	//cout << arr[0] << endl;
 
-	cout << arr[9] << endl;
+	cout << arr[9] << endl;//本质arr.operator[](index)
 
 	arr[9] = 100;//由于返回类型是int，所以arr[9]的返回值是数值，不允许作为左值
 

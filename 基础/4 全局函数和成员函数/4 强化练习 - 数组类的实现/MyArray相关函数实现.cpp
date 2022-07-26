@@ -24,7 +24,7 @@ MyArray::MyArray(const MyArray& arr)
 {
 	cout << "拷贝构造函数调用" << endl;//用来捕捉函数是否调用
 
-	//同类之间无私处
+	//同类之间无私处,*this和arr是同类
 	
 	//编译器默认提供的拷贝构造函数的实现
 	/*this->m_Capacity = arr.m_Capacity;
@@ -80,7 +80,7 @@ MyArray::~MyArray()
 	if (this->pAdress != NULL)
 	{
 		cout << "析构造函数调用" << endl;//用来捕捉函数是否调用
-		delete[] this->pAdress;
+		delete[] this->pAdress;//开辟数组用new 数据类型[数据大小]，释放需要用[]
 		this->pAdress = NULL;
 	}
 }

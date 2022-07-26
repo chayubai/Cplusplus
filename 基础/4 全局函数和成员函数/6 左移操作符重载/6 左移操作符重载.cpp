@@ -23,7 +23,7 @@ public:
 
 	//假设，int m_A;和int m_B; 是私有成员
 	//当利用全局函数实现<<操作符重载时，又希望访问类的私有成员，可以友元函数
-
+	//friend ostream& operator<<(ostream& cout, Person& p);//可以放在类中的任意位置
 	int m_A;
 	int m_B;
 };
@@ -37,8 +37,7 @@ public:
 //{
 //	Person p1(10, 20);
 //
-//	//由于cout << int数据类型，编译器不会提供自定义数据类型的操作符运算
-//	//需要用户自己重载操作符
+//	//由于cout << int数据类型，编译器提供了内置数据类型的操作符运算
 //	cout << p1.m_A << endl;
 //
 //	//由于cout << Person数据类型，编译器不会提供自定义数据类型的操作符运算
@@ -56,7 +55,7 @@ ostream& operator<<(ostream& out, Person& p)//operator<<(cout,p1)
 void test2()
 {
 	Person p1(10, 20);
-	//如果返回值void，则不能实现连续<<操作
+	//如果返回值void，则void << endl;不能实现连续<<操作
 	cout << p1 << "hello" << endl;//链式编程，返回类型为引用，且返回值为cout
 }
 

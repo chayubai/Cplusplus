@@ -2,13 +2,12 @@
 #include <iostream>
 using namespace std;
 
-//编译器默认给一个类4个函数，默认构造函数，析构函数，拷贝构造函数（浅拷贝-值拷贝），operator=()（浅拷贝-值拷贝）
+//编译器默认给一个类4个函数，默认构造函数，析构函数，拷贝构造函数（浅拷贝-简单的值拷贝），operator=()（浅拷贝-简单的值拷贝）
 //operator=()和拷贝构造函数都可以实现内置类型或者自定义类型的运算，但是是浅拷贝，可能会导致重复释放空一块空间
-//因此需要对等号操作符和拷贝构造函数进行重载
+//因此需要对等号操作符和拷贝构造函数都需要进行深拷贝重载实现
 
 class Person
 {
-
 public:
 	Person(const char* name, int age)
 	{
@@ -55,6 +54,7 @@ public:
 	//拷贝构造函数重写
 	Person(const Person&p)
 	{
+		//拷贝构造函数，是不需要判断原对象是否有内容，因为本身就没有内容
 		this->m_Name = new char[strlen(p.m_Name) + 1];
 		strcpy(this->m_Name, p.m_Name);
 		this->m_Age = p.m_Age;
@@ -75,11 +75,11 @@ void test1()
 {
 	Person p1("Tom",10);
 
-	//Person p2 = p1;//此处是默认调用拷贝构造函数，即Person p2(p1);
+	//Person p2 = p1;//此处是调用默认拷贝构造函数，即Person p2(p1);
 
 	Person p2("Jerry",19);
-	p2 = p1;//此处是默认调用operator=()，调用析构时，重复释放同一块空间，导致程序崩溃
-	//因此，重载 = 操作符
+	p2 = p1;//此处是调用默认operator=()，调用析构时，重复释放同一块空间，导致程序崩溃
+	//因此，重载 = 操作符，调用本质，p2.operator=(p1)
 
 	cout << "p2.name = "<<p2.m_Name << ",p2.age = " << p2.m_Age << endl;
 }
@@ -91,6 +91,7 @@ void test2()
 	Person p2("Jerry", 19);
 	p2 = p1;
 
+	//对于自定义数据类型可以连=操作
 	Person p3("",20);
 	p3 = p2 = p1;//连等操作，由于返回类型为void，导致p2 = p1时返回void，空再赋值给p3导致报错
 	
@@ -110,7 +111,7 @@ void test3()
 	p3 = p2 = p1;
 
 	Person p4 = p3;//默认调用拷贝构造Person p4(p3);浅拷贝，调用析构时，重复释放同一块空间，会导致程序崩溃
-	
+	//调用本质：p4.Person(p3)
 	//因此也要需要重写拷贝构造函数，实现深拷贝
 
 	cout << "p4.name = " << p4.m_Name << ",p4.age = " << p4.m_Age << endl;

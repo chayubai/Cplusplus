@@ -38,8 +38,10 @@ public:
 	//成员函数实现：重载*运算符
 	Person& operator*()
 	{
-		return *this->m_person;//返回本身，因此返回值使用引用类型
+		return *this->m_person;//*m_person即外面类型的对象本身，因此返回值使用引用类型
+		//返回对象类型，只是调用拷贝构造，不是原对象本身
 	}
+
 	//设计操作符重载时，用内置数据类型的操作，得出返回类型和返回值
 
 	~SmartPoint()
@@ -56,9 +58,9 @@ private:
 
 void test1()
 {
-	Person* p = new Person(18);
-	p->showAge();//p->，返回指针
-	(*p).showAge();//*p，返回对象
+	Person* p = new Person(18);//堆区开辟
+	p->showAge();//本质(p->)->showAge();p->，返回指针
+	(*p).showAge();//*p，返回该类（型）的对象
 	delete p;//如果不delete，不会触发析构函数调用
 
 	//当代码太多，会容易忘记delete
@@ -73,7 +75,7 @@ void test2()
 	SmartPoint sp(new Person(18));
 
 	//由于sp不是指针，不允许这么操作，因此可以通过重载->和*操作符实现
-	sp->showAge();//本质：sp->->showAge()，编译器简化为sp->showAge()
+	sp->showAge();//本质：(sp->)->showAge()，编译器简化为sp->showAge()
 	(*sp).showAge();
 	//从而实现了sp既智能，又是指针，堆上创建Person类对象时，无需担心没有释放空间的问题
 }
