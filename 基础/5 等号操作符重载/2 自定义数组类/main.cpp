@@ -96,7 +96,7 @@ int main()
 
 	cout << "------------" << endl;
 
-	MyArray array3(20);
+	MyArray array3(20);//原数组有内容
 	array3 = array1;
 	cout << "array3:";
 	cout << array3 << endl;
@@ -114,7 +114,7 @@ int main()
 	//赋值操作
 	for (int i = 0; i < 10; i++)
 	{
-		array1[i] = i + 10;//space[i] = i+10
+		array1[i] = i + 10;//返回的是space[i],由于可以当左值，返回类型为引用
 	}
 
 	cout << "array1:";

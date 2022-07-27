@@ -105,23 +105,30 @@ int getA(int* a)//将一个const实参用一个非const形参接收，是不兼容的
 }
 
 const int a = 10;
-getA(&a);//将一个const实参用一个非const形参接收，是不兼容的
+getA(&a);//报错，将一个const实参用一个非const形参接收，是不兼容的
 */
 
-ostream& operator<<(ostream& os, const MyArray& array)
+ostream& operator<<(ostream& os, const MyArray& array)//这里为了防止array[i]将内容修改，加const为什么报错？
 {
 	os << "遍历整个数组：";
 	for (int i = 0; i < array.getLen(); i++)//array.getLen() == getLen(&array);而getLen(MyArray *const this)
-	{
-		os << array[i] << " ";//array.poerator[](i) == poerator[](&array,i);
+	{//这里array.getLen()报错，用一个const MyArray* 类型的&array,传入一个非const的形参（即MyArray *const this），是不兼容的
+		//因此需要用const修饰this指针，在getLen()后面加const
+		os << array[i] << " ";//array.operator[](i) == operator[](&array,i);
+		//同理，array[i] 报错，也需要在operator[]()后面加const
+
+		//注意：源码里面如何区分不同对象的函数调用，是因为隐藏了this指针
+		//当对象调用函数时，会将对象的地址传给this指针，
+		//如果对象是const修饰的变量，this是非const类型的指针接收就会不兼容报错
+
+		//调用谁，就在谁的后面加const
 	}
-	os << endl;
 
 	os << "调用了<<操作符重载";
 	return os;
 }
 
-istream& operator>>(istream& is, MyArray& array)
+istream& operator>>(istream& is, MyArray& array)//这个函数没有用到友元，在类外声明
 {
 	cout << "请输入" << array.getLen() << "个数: ";
 	for (int i = 0; i < array.getLen(); i++)
@@ -152,5 +159,5 @@ bool operator==(MyArray& array1, MyArray& array2)
 //局部
 bool MyArray::operator!=(MyArray& another)
 {
-	return !(*this == another);
+	return !(*this == another);//这里*this == another调用==操作符函数
 }

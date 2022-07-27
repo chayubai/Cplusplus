@@ -1,14 +1,14 @@
 #include "MyString.h"
 //无参构造
-MyString::MyString()
+MyString::MyString()//MyString mystring;假设调用无参构造，字符串地址为空
 {
 	this->len = 0;
-	this->str = NULL;
+	this->str = NULL;//‘\0’== NULL 0字符或空指针  ""  == "\0" 空字符串
 }
 //有参构造
 MyString::MyString(const char* str)
 {
-	if (str == NULL)
+	if (str == NULL)//char* c = NULL;MyString s(c);传入NULL,开辟一个空字符串
 	{
 		this->len = 0;
 		this->str = new char[0 + 1];
@@ -27,13 +27,13 @@ MyString::~MyString()
 {
 	if (this->str != NULL)
 	{
-		cout << this->str << "执行了析构函数" << endl;
-		delete this->str;
+		//cout << this->str << "执行了析构函数" << endl;
+		delete[] this->str;//这里需要delete数组
 		this->str = NULL;
 		this->len = 0;
 	}
 }
-//初始化的时候调用的 - 拷贝构造
+//初始化的时候调用的 没有垃圾 - 拷贝构造
 MyString::MyString(const MyString& another)
 {
 	this->len = another.len;
@@ -42,7 +42,7 @@ MyString::MyString(const MyString& another)
 }
 
 //重载<<
-ostream& operator<<(ostream& os, MyString& s)
+ostream& operator<<(ostream& os, MyString& s)//注意：这个不需要作用域
 {
 	os << s.str;
 	return os;
@@ -74,10 +74,8 @@ MyString& MyString::operator=(const MyString& another)
 	return *this;
 }
 //重载>>
-istream& operator>>(istream& is, MyString& s)
+istream& operator>>(istream& is, MyString& s)//这个不需要作用域
 {
-	//is >> s.str;//char *str = NULL;cin >> str;程序会崩溃
-	
 	//1、将s之前的字符串释放掉
 	if (s.str != NULL)
 	{
@@ -86,6 +84,9 @@ istream& operator>>(istream& is, MyString& s)
 		s.len = 0;
 	}
 	//2、通过cin添加新的字符串
+
+	//is >> s.str;//char *str = NULL;cin >> str;往空指针里面写数据，程序会崩溃
+	//此时在上一步，s.str被置空了
 	char temp_str[4096] = { 0 };
 	
 	cin >> temp_str;
@@ -98,14 +99,18 @@ istream& operator>>(istream& is, MyString& s)
 }
 
 //重载操作符+
-MyString MyString::operator+(MyString& another)
+MyString MyString::operator+(MyString& another)//如果是MyString& 不能返回局部变量的引用
 {
 	MyString temp;
 	int len = this->len + another.len;
 	temp.len = len;
 	temp.str = new char[len + 1];
-	memset(temp.str, 0, len + 1);
+
+	memset(temp.str, 0, len + 1);//清空，否则会往后面继续追加
 	strcat(temp.str, this->str);
+	//可以直接使用strcpy(temp.str, this->str)则可以不需要上一行代码
+
 	strcat(temp.str, another.str);
+
 	return temp;
 }

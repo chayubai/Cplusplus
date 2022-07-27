@@ -6,6 +6,7 @@ using namespace std;
 //operator=()和拷贝构造函数都可以实现内置类型或者自定义类型的运算，但是是浅拷贝，可能会导致重复释放空一块空间
 //因此需要对等号操作符和拷贝构造函数都需要进行深拷贝重载实现
 
+#if 0
 class Person
 {
 public:
@@ -52,7 +53,7 @@ public:
 	}
 
 	//拷贝构造函数重写
-	Person(const Person&p)
+	Person(const Person &p)
 	{
 		//拷贝构造函数，是不需要判断原对象是否有内容，因为本身就没有内容
 		this->m_Name = new char[strlen(p.m_Name) + 1];
@@ -123,9 +124,8 @@ int main()
 	test3();
 	return 0;
 }
+#endif
 
-
-#if 0
 class Student
 {
 public:
@@ -139,6 +139,7 @@ public:
 		this->id = id;
 		//如果使用this->name = name;初始化，不会导致问题
 		//Student s(1,"123123");
+		
 		//如果使用this->name = name;初始化，以下方法的定义，会导致问题
 		//char name[64] = "zhangsan";Student s(1,name);
 		//char *name = new char[64];strcpy(name,"zhangsan");Student s1(1,name);delete[] name;s1.printS();
@@ -192,15 +193,41 @@ public:
 	}
 private:
 	int id;
-	char* name;//如果是char name[64]，不需要考虑深拷贝浅拷贝
+	char* name;//如果是char name[64]即栈上开辟的数组，不需要考虑深拷贝浅拷贝
 };
+
+void test()
+{
+	//如果有参构造的指针初始化方式为this->name = name;
+	//如果是传常量，则可以。如：Student s(1, "12121");
+	//如果是传变量，则会出问题。
+
+	char name[64] = "zhangsan";
+	Student s(1,name);//传入变量name
+	//此时类中char* name维护的是栈上的数组name[64],指向同一个地址
+	//导致这两个变量的生命周期相同
+	//当namm结束了，类中的char* name也会结束
+
+	//或者以下方式
+	char *name = new char[64];
+	strcpy(name,"zhangsan");
+	Student s1(1,name);//传入变量name
+	//此时类中char* name维护的是堆上的name = new char[64];,指向同一个地址
+	//导致这两个变量的生命周期相同
+
+	delete[] name;
+	//当name释放时，类中的char* name也会释放
+	s1.printS();
+}
+
 int main()
 {
+
 	Student s1(1, "zhangsan");
 	Student s2 = s1;//拷贝构造
 
 	Student s3(2, "lisi");
-	s2 = s3;//s2的等号赋值操作符，可以连续赋值
+	s2 = s3;//s2的等号赋值操作符，可以连续赋值，返回s2本身
 
 	s1.printS();
 	s2.printS();
@@ -208,4 +235,17 @@ int main()
 
 	return 0;
 }
-#endif
+
+//注意：默认拷贝构造函数和默认赋值操作符函数的功能都是一样的，都是浅拷贝动作
+
+//Student s1(1, "zhangsan");
+//Student s2 = s1;//拷贝构造
+//
+//Student s3(2, "lisi");
+//s2 = s3;
+//画内存图，发现默认赋值操作符函数，直接将s2.name的赋值给了s2.name
+//导致s2和s3的name都指向同一块空间，析构时导致释放同一块空间两次。
+//同时原s2.name中的内容导致内存泄漏
+//因此重载赋值操作符函数，需要先判断s2.name是否开辟了空间，先释放空间，再进行深拷贝动作
+
+//技巧：当重载函数是一定要提供=操作符重载和拷贝构造函数，防止别人使用你的源码时，误以为自己写的代码报错

@@ -9,11 +9,18 @@ public:
 	{
 		this->value = value;
 	}
+	Test operator+(Test& another)
+	{
+		cout << "执行了+操作符重载..." << endl;
+		Test temp(this->value + another.value);
+		return temp;
+	}
 	Test& operator+=(Test& another)
 	{
 		cout << "执行了+=操作符重载..." << endl;
-		Test temp(this->value + another.value);
-		return temp;
+		this->value += another.value;
+		//Test temp(this->value + another.value);//是错误的
+		return *this;
 	}
 	bool operator&&(Test& another)
 	{
@@ -46,10 +53,12 @@ public:
 private:
 	int value;
 };
+
 int main()
 {
 
 #if 0
+	//内置类型的&&和||操作的运算
 	int a = 0;
 	if (a && (a = 10))//&& 短路与
 	{
@@ -67,7 +76,7 @@ int main()
 	Test t1(0);
 	Test t2(20);
 	//重载&&操作符，并不会发生短路与现象
-	if (t1 && (t1 += t2))//t1.operator&&( t1.operator+=(t2) )
+	if (t1 && (t1 += t2))//t1.operator&&( t1.operator+=(t2) )，导致(t1 += t2)先执行
 	{
 		cout << "为真" << endl;
 	}

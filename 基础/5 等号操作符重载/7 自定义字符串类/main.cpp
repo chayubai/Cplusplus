@@ -27,19 +27,15 @@ int main()
 	cin >> s4;
 	cout << s4 << endl;
 #endif
-#if 0
-	MyString s1("123");
-	MyString s2("456");
-	cout << s1+s2 << endl;
-	cout << s1 << endl;
-	cout << s2 << endl;
-#endif
 
 	MyString s1("123");
 	MyString s2("456");
-	cout << (s1 + s2) << endl;
+	MyString s = s1 + s2 + s1;//s1 + s2 调用拷贝构造返回临时对象，返回匿名对象
+	
 	cout << s1 << endl;
 	cout << s2 << endl;
+	cout << s << endl;
 
+	//cout << (s1 + s2 + s1) << endl;//报错，为什么？
 	return 0;
 }

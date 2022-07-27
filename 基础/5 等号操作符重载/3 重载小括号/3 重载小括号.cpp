@@ -36,7 +36,9 @@ public:
 void test2()
 {
 	MyAdd myAdd;
-	cout << myAdd(1, 1) << endl;
+	cout << myAdd(1,1) << endl;//myAdd.operator()(1,1)
+
+	//注意：一个类默认是没有()调用函数的，只有重载后才能像函数调用一样使用
 
 	//()的重载很灵活
 

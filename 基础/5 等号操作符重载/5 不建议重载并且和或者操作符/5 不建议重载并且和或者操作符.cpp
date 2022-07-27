@@ -27,7 +27,7 @@ int main()
 
 	//失去了短路特性
 	//complex1.oprator&&(complex1.operator+=(complex2))
-	//先运算complex1 += complex2导致complex1为1，此时complex1 && complex1为真
+	//先运算complex1 += complex2导致complex1为1，此时complex1 && complex1即1&&1为真
 
 	//因此不要重载&&和||操作符
 	if (complex1 && (complex1 += complex2))

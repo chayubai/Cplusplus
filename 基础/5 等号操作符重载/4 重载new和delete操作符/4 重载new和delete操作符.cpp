@@ -20,12 +20,13 @@ public:
 		cout << "重载了new操作符" << endl;
 		return malloc(size);
 	}
+	//重载的new操作符，依然会触发对象的构造函数
 	void* operator new[](size_t size)
 	{
 		cout << "重载了new[]操作符" << endl;
 		return malloc(size);
 	}
-
+	//重载的delete操作符，依然会触发对象的析构函数
 	void operator delete(void *p)
 	{
 		cout << "重载了delete操作符" << endl;
@@ -35,6 +36,7 @@ public:
 			p = NULL;
 		}
 	}
+	//重载的delete操作符，依然会触发对象的析构函数
 	void operator delete[](void* p)
 	{
 		cout << "重载了delete[]操作符" << endl;
@@ -59,9 +61,9 @@ int main()
 	//delete pa;
 
 	//int* array_p = malloc(sizeof(int) * 10);
-	A* parray = new A[10];
+	A* parray = new A[10];//调用10次无参构造
 	//即parray->operator new[](sizeof(A[10]))
-	delete[] parray;
+	delete[] parray;//析构10次析构
 	
 	return 0;
 }
