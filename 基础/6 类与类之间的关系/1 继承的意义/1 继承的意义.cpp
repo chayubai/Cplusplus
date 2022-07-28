@@ -69,6 +69,8 @@ public:
 //继承的语法：class 子类 : 继承方式 父类
 //News      子类   派生类
 //BasePage  父类   基类
+//（父类 - 公共特性，子类 - 突出特性）
+
 class News :public BasePage
 {
 public:

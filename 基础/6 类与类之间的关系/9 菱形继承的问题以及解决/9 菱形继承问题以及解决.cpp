@@ -36,8 +36,10 @@ void test1()
 
 	//通过开发人员命令提示工具查看SheepTuo类的，成员分部情况
 
+	//菱形继承问题如何解决？
 	//虚继承的方法，关键字virtual
-	//将两个父类，用虚继承继承他们的父类Animal，此时他们的父类为虚基类
+	//将两个父类Sheep和Tuo的继承方式改为虚继承，即用虚继承继承他们的父类Animal，此时他们的父类为虚基类
+	//操作的是共享的一份数据
 }
 
 void test2()
@@ -50,7 +52,7 @@ void test2()
 	cout << "Sheep::m_Age = " << st.Sheep::m_Age << endl;
 	cout << "Tuo::m_Age = " << st.Tuo::m_Age << endl;
 
-	cout << "SheepTuo.m_Age = " << st.m_Age << endl;
+	cout << "SheepTuo.m_Age = " << st.m_Age << endl;//不会再有二义性
 	//此时第一次初始羊驼10岁，第二次初始羊驼20岁（覆盖），最终羊驼20岁，此时结果唯一了
 
 	//再通过开发人员命令提示工具查看SheepTuo类的，成员分部情况
@@ -87,21 +89,6 @@ int main()
 	test3();
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #if 0

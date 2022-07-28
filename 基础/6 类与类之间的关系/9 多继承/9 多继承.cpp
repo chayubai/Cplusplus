@@ -47,6 +47,8 @@ void test1()
 void test2()
 {
 	Son s;
+	//多继承中很容易引发二义性
+	//cout << "m_F = " << s.m_F << endl; 
 	//当多继承的两个父类有相同的成员属性名，此时需要加作用域才能区分
 	cout << "Base1.m_F = " << s.Base1::m_F << endl;
 	cout << "Base2.m_F = " << s.Base2::m_F << endl;
@@ -61,13 +63,12 @@ int main()
 }
 
 #if 0
+//多继承
 
-
-#if 0
-class Furniture//材质
+class Furniture
 {
 public:
-	int m;
+	int m;//材质
 };
 class Bed :public Furniture
 {
@@ -112,9 +113,14 @@ int main()
 	//sb.m = 100;//访问不明确
 	sb.Bed::m = 100;
 	sb.Sofa::m = 200;
+
+	//多继承导致一个沙发床有两种材质
 	return 0;
 }
 #endif
+
+#if 0
+//虚继承
 
 class Furniture//家具类
 {
@@ -162,7 +168,7 @@ int main()
 	SofaBed sb;
 	sb.SleepAndSit();
 
-	sb.m = 100;//访问不明确
+	sb.m = 100;//此时只有一个m
 	return 0;
 }
 #endif
