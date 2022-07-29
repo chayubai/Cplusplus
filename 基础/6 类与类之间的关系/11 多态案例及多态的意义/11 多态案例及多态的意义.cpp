@@ -11,21 +11,21 @@ public:
 	}
 };
 //1999年写的
-class AdvHero:public Hero
-{
-public:
-	virtual int getAd()//子类可不写virtual
-	{
-		return 1001;
-	}
-};
-//1999年写的
 class Monster//怪兽类
 {
 public:
 	int getAd()
 	{
 		return 1000;
+	}
+};
+//1999年写的
+class AdvHero :public Hero
+{
+public:
+	virtual int getAd()//子类可不写virtual
+	{
+		return 1001;
 	}
 };
 //2020年写的
@@ -61,3 +61,4 @@ int main()
 	playFight(&bH, &m);
 	return 0;
 }
+//自己实现一个父类引用指向子类对象的多态案例

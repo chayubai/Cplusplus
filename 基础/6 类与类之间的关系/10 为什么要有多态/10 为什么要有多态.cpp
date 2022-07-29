@@ -109,7 +109,7 @@ public:
 void fightPeople(Yuebuqun* hero)//类的兼容性赋值原则
 {
 	cout << "调用打人的方法" << endl;
-	hero->fight();//让fight实现多态
+	hero->fight();//让hero->fight()实现多态
 	//子类方法名和父类方法名相同
 	//如果希望传递进来的是子类。调用子类的fight
 	//如果希望传递进来的是父类。调用父类的fight

@@ -71,7 +71,7 @@ public:
 	//打印，只需要调用父类的方法即可
 	void printS()
 	{
-		Student::printS();
+		Student::printS();//调用父类中的方法需要加作用域
 		cout << "score = " << this->score << endl;
 	}
 private:
@@ -82,6 +82,6 @@ private:
 int main()
 {
 	newStudent ns(1, "zhangsan", 80.0);
-	ns.printS();
+	ns.printS();//子类和父类同名函数，优先调用本类中的方法
 	return 0;
 }
