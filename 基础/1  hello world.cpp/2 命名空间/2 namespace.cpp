@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
 #if 0
 #include <iostream>
 using namespace std;//如果不添加这一行代码，cout和endl会报“未声明的标识符”
