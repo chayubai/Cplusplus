@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
+//张三 
+
 #if 0  //#if 0 ... #endif 属于条件编译，0 即为参数。是注释符
 
 //C的基本框架
