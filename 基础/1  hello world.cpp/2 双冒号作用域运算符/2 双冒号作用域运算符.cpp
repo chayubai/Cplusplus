@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
 #include <iostream>
 using namespace std;
+
 int k = 1000;
 int main()
 {
