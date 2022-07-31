@@ -8,6 +8,7 @@ class AbstractCalculator
 {
 public:
 
+	//如果父类的虚函数的实现没有意义，可以用纯虚函数代替
 	/*virtual int getResult()
 	{
 		return 0;
@@ -39,21 +40,13 @@ public:
 		return m_A - m_B;
 	}
 };
-//乘法计算器类
-class MulCalculator :public AbstractCalculator
-{
-public:
-	virtual int getResult()
-	{
-		return m_A * m_B;
-	}
-};
-
-//当若干年后想要提供更多新功能，只需要追加代码即可
 
 class Test :public AbstractCalculator
 {
-
+	/*int getResult()
+	{
+		return 0;
+	}*/
 };
 void test1()
 {
@@ -70,13 +63,17 @@ void test1()
 	c->m_B = 20;
 	cout << c->getResult() << endl;
 
+	delete c;
+	c = NULL;
 	//由于整个过程中父类的虚函数用不到，可以改为纯虚函数
 }
 
 void test2()
 {
-	//AbstractCalculator abc;//此时会报错：抽象类不能实例化对象
-	//Test t;//子类继承抽象父类，也不能实例化对象报错
+	//AbstractCalculator abc;//报错：抽象类不能实例化对象
+	
+	//Test t;//子类继承抽象父类，如果不重写虚函数，也不能实例化对象报错
+	
 	//解决方法：子类中，对父类虚函数重写
 }
 

@@ -101,8 +101,8 @@ class GrandSon3 :public Son3
 public:
 	void func()
 	{
-		//m_A = 100;//在Son3中 m_A已经变为私有权限，私有权限下子类GrandSon3内外均不可访问
-		//m_B = 100;//在Son3中 m_B已经变为私有权限，私有权限下子类GrandSon3内外均不可访问
+		//m_A = 100;//在Son3中 m_A已经变为私有权限，私有权限下子类GrandSon3内外均不可可见
+		//m_B = 100;//在Son3中 m_B已经变为私有权限，私有权限下子类GrandSon3内外均不可可见
 		//m_C = 100;//父类中私有成员，子类GrandSon3内外均不可见
 	}
 };

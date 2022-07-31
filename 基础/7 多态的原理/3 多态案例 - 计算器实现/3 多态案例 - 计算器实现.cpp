@@ -9,9 +9,9 @@ using namespace std;
 class calculator
 {
 public:
-	int getResult(string oper)
+	int getResult(string oper)//char oper
 	{
-		if (oper == "+")
+		if (oper == "+")//oper == '+'
 		{
 			return m_A + m_B;
 		}
@@ -42,9 +42,10 @@ int main()
 }
 #endif
 
-//对于上面代码，当添加功能时，需要修改源码，且当功能出现问题，维护方便
+//对于上面代码，当添加功能时，需要修改源码，且当功能出现问题，维护不方便
+
 //设计原则：开闭原则
-//对扩展进行开放，对修改进行关闭
+//		对扩展进行开放，对修改进行关闭
 
 //利用多态实现计算器
 
@@ -93,7 +94,7 @@ public:
 int main()
 {
 	//利用多态调用不同的计算器类的功能
-	AbstractCalculator *c = new AddCalculator;
+	AbstractCalculator *c = new AddCalculator;//父类指针指向子类对象
 	c->m_A = 10;
 	c->m_B = 20;
 	cout << c->getResult() << endl;
@@ -104,4 +105,8 @@ int main()
 	c->m_A = 10;
 	c->m_B = 20;
 	cout << c->getResult() << endl;
+
+	delete c;
+	c = NULL;
 }
+//多态：代码可读性强，组织结构清晰，扩展性强

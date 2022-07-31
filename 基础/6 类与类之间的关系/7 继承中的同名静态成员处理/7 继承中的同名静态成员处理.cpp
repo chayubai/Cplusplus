@@ -32,7 +32,7 @@ class Son :public Base
 public:
 	static void func()
 	{
-		cout << "Base func()成员函数调用 " << endl;
+		cout << "Son func()成员函数调用 " << endl;
 	}
 	static int m_A;
 };
@@ -84,17 +84,15 @@ void test3()
 	Son s;
 	//1、
 	s.func();
-	//s.func(10);报错，父类所有同名函数被隐藏掉了
-	
+	//s.func(10);//报错，父类所有同名函数被隐藏掉了
+	s.Base::func(10);
 	//2、
-	//Son::func(10);报错，父类所有同名函数被隐藏掉了
-	
+	//Son::func(10);//报错，父类所有同名函数被隐藏掉了
+	Son::Base::func(10);
+
 	//与普通成员函数结论一样
 	//当子类重新定义了父类中的同名成员函数，子类的成员函数会，隐藏掉父类中所有重载版本的同名成员
 	//可以利用作用域显式指定调用
-
-	s.Base::func(10);
-	Son::Base:: func(10);
 }
 
 int main()

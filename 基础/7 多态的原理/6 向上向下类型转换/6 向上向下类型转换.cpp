@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+//即：类的兼容性原则
 class Animal
 {
 public:
@@ -10,7 +11,6 @@ public:
 		cout << "动物在说话" << endl;
 	}
 };
-
 
 class Cat :public Animal
 {
@@ -41,12 +41,15 @@ void test2()
 	//如果父类指针去访问，但只能访问Animal大小的空间，因此不会访问越界
 	
 	//Cat -> Animal  父转子：向上类型转换  -  安全
-
-
-	//如果发生多态，即父类指针指向子类对象，那么转换永远都是安全的
-	//Animal* animal = new Cat; //一开始开辟了Cat大小的空间，此时父类指针可以访问Animal大小的空间
-	//Cat* cat = (Cat*)animal;//此时再当将父类指针强转为子类类型，则子类指针也可以访问Cat大小的空间
 }
+
+void test3()
+{
+	//如果发生多态，即父类指针指向子类对象，那么转换永远都是安全的
+	Animal* animal = new Cat; //一开始开辟了Cat大小的空间，此时父类指针可以访问Animal大小的空间
+	Cat* cat = (Cat*)animal;//此时再当将父类指针强转为子类类型，则子类指针也可以访问Cat大小的空间
+}
+
 int main()
 {
 	test1();

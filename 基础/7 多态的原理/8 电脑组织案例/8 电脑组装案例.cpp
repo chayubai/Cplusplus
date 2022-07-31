@@ -26,8 +26,8 @@ public:
 	Computer(CPU* cpu, VideoCard* vc, Memory* mem)
 	{
 		cout << "电脑构造函数调用" << endl;
-		this->m_cpu = cpu;
-		this->m_vc = vc;
+		this->m_cpu = cpu;//注意：这里为什么可以直接赋值？
+		this->m_vc = vc;//而char* name = name却不能？
 		this->m_mem = mem;
 	}
 	void doWork()
@@ -119,7 +119,7 @@ void test1()
 	VideoCard* Vc1 = new LenovoVideoCard;
 	Memory* Mem1 = new LenovoMemory;
 	cout << "第一台电脑组成：" << endl;
-	Computer c1(Cpu1, Vc1, Mem1);
+	Computer c1(Cpu1, Vc1, Mem1);//随着c1结束，触发析构，释放Cpu1, Vc1, Mem1
 	c1.doWork();
 
 	CPU* Cpu2 = new LenovoCPU;
@@ -148,10 +148,14 @@ void test2()
 	c2.doWork();
 
 	//分析程序为什么会崩掉？
+	//当程序结束时，c2先调用析构，释放Cpu2, Vc1, Mem1
+	//c1再析构，释放Cpu1, Vc2, Mem1，导致已经为NULL的Mem1再次析构，导致错误
+	//经过调试也能发现，c1的Mem1和c2的Mem1指向同一块空间
+
 }
 int main()
 {
-	test1();
+	//test1();
 	//test2();
 	return 0;
 }

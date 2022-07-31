@@ -29,7 +29,8 @@ MyArray::MyArray(const MyArray& arr)
 	//编译器默认提供的拷贝构造函数的实现
 	/*this->m_Capacity = arr.m_Capacity;
 	this->m_Size = arr.m_Size;
-	this->pAdress = arr.pAdress;//浅拷贝*/
+	this->pAdress = arr.pAdress;//浅拷贝
+	*/
 
 	this->m_Capacity = arr.m_Capacity;
 	this->m_Size = arr.m_Size;

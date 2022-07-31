@@ -77,7 +77,7 @@ public:
 };
 
 //业务函数
-void DoBussiness(AbstractDrinking* drink)
+void DoBussiness(AbstractDrinking* drink)//父类指针指向子类对象
 {
 	drink->MakeDrink();
 	delete drink;

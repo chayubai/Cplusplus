@@ -137,8 +137,8 @@ public:
 	Student(int id, const char *name)
 	{
 		this->id = id;
-		//如果使用this->name = name;初始化，不会导致问题
-		//Student s(1,"123123");
+		//如果使用this->name = name;使用常量初始化，不会导致问题
+		//如：Student s(1,"123123");
 		
 		//如果使用this->name = name;初始化，以下方法的定义，会导致问题
 		//char name[64] = "zhangsan";Student s(1,name);
@@ -206,7 +206,7 @@ void test()
 	Student s(1,name);//传入变量name
 	//此时类中char* name维护的是栈上的数组name[64],指向同一个地址
 	//导致这两个变量的生命周期相同
-	//当namm结束了，类中的char* name也会结束
+	//当name结束了，类中的char* name也会结束，此时s对象就会有问题
 
 	//或者以下方式
 	char *name = new char[64];
@@ -214,6 +214,7 @@ void test()
 	Student s1(1,name);//传入变量name
 	//此时类中char* name维护的是堆上的name = new char[64];,指向同一个地址
 	//导致这两个变量的生命周期相同
+	//当name结束了，类中的char* name也会结束，此时s1对象就会有问题
 
 	delete[] name;
 	//当name释放时，类中的char* name也会释放
