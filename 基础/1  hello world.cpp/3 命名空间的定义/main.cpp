@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
 #include "game1.h"
 #include "game2.h"
 
