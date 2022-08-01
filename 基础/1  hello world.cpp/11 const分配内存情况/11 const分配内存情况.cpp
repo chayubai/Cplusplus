@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
 #include <iostream>
 using namespace std;
 //extern编译器也会给const变量分配内存
@@ -47,3 +48,5 @@ int main()
 
 //注意：尽量使用const的常量，代替#define定义的常量
 //因为：define出的宏常量，没有数据类型，不重视作用域
+//const修饰的变量 - 常量 const int a = 10;一定要初始化
+//对于·类中有const类型的成员属性可以通过初始化列表赋值，a(a)
