@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
 //const int b = 100;//默认内部链接属性
 extern const int b = 100;
 //只能在本文件内使用，外部使用会报错
