@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
 #if 0
 //1、全局变量检查增强，C++检测出重定义
 #include <iostream>
