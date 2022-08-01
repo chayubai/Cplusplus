@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
+ 
 //1、简述C++的命名空间的作用。
 
 //2、定义两个命名空间A和B分别在A中和B中定义变量value，在main函数中将两个空间的value打印出来。
