@@ -5,7 +5,7 @@ using namespace std;
 //#define ADD(x,y) x+y
 #define ADD(x,y) ((x)+(y))
 void test1()
-{
+{ 
 	int a = 10;
 	int b = 20;
 	int ret = ADD(a, b) * 20;
