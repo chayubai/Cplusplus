@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+ 
 //C语言中，函数相同是指函数名相同，则函数相同，会报重定义错误
 //C++语言中，函数相同是指函数的返回值，函数形参列表（参数个数，参数类型，参数顺序），则函数相同，会报重定义错误
 //函数重载是指函数名相同，参数列表不同
