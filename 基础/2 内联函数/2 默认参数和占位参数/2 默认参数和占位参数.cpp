@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 //C语言没有默认参数和占位参数的概念
-#if 0
+#if 0 
 //默认参数:形参被初始化了
 int myfunc1(int a = 10,int b = 5)
 {
