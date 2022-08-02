@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
+
+#if 0
 //利用多态实现计算器
 
 //基类
@@ -77,7 +79,88 @@ void test2()
 	//解决方法：子类中，对父类虚函数重写
 }
 
+#endif
+
+//图形类
+//如果一个类，拥有纯虚函数，就称该类为抽象类
+//不管该类中有没有成员属性，只有该类有纯虚函数，就是抽象类，抽象类就是不能实例化对象
+//如果能实例化，则调用该类的成员函数就是没有意义的，因为该函数没有实现
+class Shape
+{
+public:
+	//表示图形类声明一个方法，它是一个纯虚函数，没有函数的实现
+	virtual double getArea() = 0;
+	//int a;
+	//int b;
+};
+
+//正方形类
+//如果一个普通类继承拥有纯虚函数的类，必须要重写纯虚函数，否则也是一个抽象类
+//如果实例化，则调用的成员函数是继承父类过来的，调用也没有意义
+class Rect:public Shape
+{
+public:
+	Rect(int a)
+	{
+		this->a = a;
+	}
+	virtual double getArea()
+	{
+		return a * a;
+	}
+	int a;
+};
+
+//圆类
+class Circle :public Shape
+{
+public:
+	Circle(int r)
+	{
+		this->r = r;
+	}
+	virtual double getArea()
+	{
+		return r * r * 3.14;
+	}
+	int r;
+};
+//面向抽象类的架构函数
+void printArea(Shape *sp)
+{
+	sp->getArea();
+}
+
+//业务层 面向抽象类编程
 int main()
 {
+	//main中所有使用的变量类型，都是抽象类Shape的类型
+	Shape* s = new Rect(10);
+	s->getArea();//发生多态
+
+	delete s;
+
+	s = new Circle(2);
+	s->getArea();
+
+	delete s;
+	s = NULL;
+
 	return 0;
 }
+
+//纯虚函数的好处：
+//1、抽象类提供接口，子类继承抽象类，只需要根据抽象类的接口实现业务逻辑，与其他类无关，与main函数的使用无关
+//2、业务层，main函数的使用，只需知道抽象类的内容，将其他类进行隔离，类和类之间的耦合度低
+
+//如：main函数中有Rect* s1 = new Rect(10);Circle* s2 = new Circle(2);代码，与多个类的关联性很强
+
+//纯虚函数 - 设计模式的原则之一：依赖倒转原则
+
+//main      - 高层业务逻辑层
+
+//Shape: virtual double getArea() = 0;   - 抽象层
+
+//Rect: virtual double getArea(){}     Circle: virtual double getArea(){}   - 实现层
+
+//使得高层业务逻辑层向抽象层靠拢，实现层也向抽象层靠拢

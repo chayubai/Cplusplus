@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+ 
 //extern "C" void show();
 
 //C++有函数重载，会对函数名称进行修饰，导致调用C语言的函数链接失败
