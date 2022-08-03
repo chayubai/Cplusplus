@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 struct Person
-{
+{ 
 	char name[64];
 	int age;
 };
