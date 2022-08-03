@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+ 
 struct Person1
 {
 	//struct类型不写控制权限， 默认public控制权限
