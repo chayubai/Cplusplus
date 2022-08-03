@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
+ 
 //类是对对象的抽象
 //对象是对类的实例
 #if 0
