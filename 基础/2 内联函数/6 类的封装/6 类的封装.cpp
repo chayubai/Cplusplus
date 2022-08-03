@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-struct Date
+struct Date 
 {
 	//注意：一个结构体的内部，默认的访问控制权限是public
 	int year;
