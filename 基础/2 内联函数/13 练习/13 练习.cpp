@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 //1、简述函数默认参数的声明规则
-
+ 
 //2、int func(int a,int b)和void func(int a, int b, int c)是重载函数么？为什么？
 
 //3、以下函数重载写法是否正确？为什么？
