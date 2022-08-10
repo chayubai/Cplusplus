@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
+ 
 //设计一个圆形类（AdvCircle）,和一个点类（Point），计算点在圆内部还是圆外，即求点和圆的关系
 #include <iostream>
 using namespace std;
