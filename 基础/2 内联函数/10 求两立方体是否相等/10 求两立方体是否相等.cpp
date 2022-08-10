@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
+ 
 //设计立方体类（Cube），求出立方体的面积和体积
 //求两个立方体，是否相等（全局函数和成员函数）
 
