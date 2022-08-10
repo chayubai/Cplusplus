@@ -1,6 +1,6 @@
 #include "Circle.h"
 #include "Point.h"
-
+ 
 //‘≤¿‡
 
 void Circle::setXY(int x, int y)

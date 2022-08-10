@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
+ 
 #include "Point.h"
 #include "Circle.h"
 

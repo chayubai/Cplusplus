@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-//点类
+//点类 
 class Point
 {
 public:
