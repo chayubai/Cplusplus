@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-class Test
+class Test 
 {
 public:
 	//编译器会默认提供一个类的无参构造函数，和默认的类的析构函数
