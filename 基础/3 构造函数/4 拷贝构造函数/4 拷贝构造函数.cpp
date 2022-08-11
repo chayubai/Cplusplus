@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 class Test
-{
+{ 
 public:
 
 	//自己定义的有参的构造函数
