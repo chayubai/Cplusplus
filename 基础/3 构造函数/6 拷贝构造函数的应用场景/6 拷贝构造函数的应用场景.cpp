@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 class Test
-{
+{ 
 public:
 	//无参构造函数
 	Test()
