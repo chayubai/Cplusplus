@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 //构造函数的初始化列表的练习
-#if 0
+#if 0 
 #include <string>
 class Phone
 {
