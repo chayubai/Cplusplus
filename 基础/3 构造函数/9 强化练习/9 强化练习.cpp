@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 #if 0
-class ABCD
+class ABCD 
 {
 public:
 	ABCD(int a, int b, int c)
