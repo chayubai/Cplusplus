@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+ 
 #include <string.h>
 
 //构造函数的作用：初始化对象
