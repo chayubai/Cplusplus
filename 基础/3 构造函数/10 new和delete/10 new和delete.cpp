@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-#if 0
+#if 0 
 //C语言中，在堆上开辟空间,需要手动释放空间
 void test1()
 {
