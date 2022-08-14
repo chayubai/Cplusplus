@@ -3,7 +3,7 @@
 using namespace std;
 #if 0
 class Person
-{
+{ 
 public:
 	/*Person(int a, int b)
 	{
