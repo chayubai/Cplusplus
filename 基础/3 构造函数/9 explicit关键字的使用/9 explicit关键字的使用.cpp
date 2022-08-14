@@ -3,7 +3,7 @@
 using namespace std;
 
 class MyString
-{
+{ 
 public:
 	MyString(const char * str)
 	{
