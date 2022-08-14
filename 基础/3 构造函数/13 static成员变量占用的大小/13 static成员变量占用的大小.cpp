@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-#if 0
+#if 0 
 //static成员变量，是属于类的，而不属于某个对象的，它的空间不在栈上，而在静态区
 class C1
 {
