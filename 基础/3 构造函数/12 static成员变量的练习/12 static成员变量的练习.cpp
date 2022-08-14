@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 #if 0
-class Box
+class Box 
 {
 public:
 	Box(int l, int w)
