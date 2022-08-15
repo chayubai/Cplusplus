@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-#if 0
+#if 0 
 //1、this的含义
 //对于静态成员函数是没有this指针的
 class Person1
