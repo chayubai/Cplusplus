@@ -4,7 +4,7 @@
 using namespace std;
 class Person
 {
-public:
+public: 
 
 	Person(int age)
 	{
