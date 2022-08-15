@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 class Person
-{
+{ 
 public:
 
 	void showClass()//这个成员函数没有使用this
