@@ -2,7 +2,7 @@
 
 #include "MyArray.h"
 
-int main()
+int main() 
 {
 	MyArray array1(10);//开辟10个元素的数组
 	//赋值操作
