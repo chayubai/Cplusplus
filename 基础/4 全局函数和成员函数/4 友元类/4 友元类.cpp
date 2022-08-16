@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
-
+ 
 #include <string>
 class Building;//声明Building类,防止下面提前使用报错
 
