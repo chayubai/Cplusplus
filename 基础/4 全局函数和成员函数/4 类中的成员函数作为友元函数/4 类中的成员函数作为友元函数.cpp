@@ -3,7 +3,7 @@
 using namespace std;
 
 #include <string>
-
+ 
 class Building;//ÉùÃ÷BuildingÀà
 
 class GoodGay
