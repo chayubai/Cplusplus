@@ -3,7 +3,7 @@
 using namespace std;
 #include <string>
 class MyInter
-{
+{ 
 	friend ostream& operator<<(ostream& cout, const MyInter& myInt);
 
 public:
