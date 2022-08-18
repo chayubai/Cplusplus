@@ -1,7 +1,7 @@
 #include "MyArray.h"
 //数组类封装
 //目标：解决实际问题，训练构造函数，copy构造函数等为操作符重载做准备。
-
+ 
 MyArray::MyArray()
 {
 	cout << "MyArray()..." << endl;
