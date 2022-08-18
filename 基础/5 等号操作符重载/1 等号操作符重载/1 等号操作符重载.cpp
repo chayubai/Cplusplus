@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
-using namespace std;
+using namespace std; 
 
 //编译器默认给一个类4个函数，默认构造函数，析构函数，拷贝构造函数（浅拷贝-简单的值拷贝），operator=()（浅拷贝-简单的值拷贝）
 //operator=()和拷贝构造函数都可以实现内置类型或者自定义类型的运算，但是是浅拷贝，可能会导致重复释放空一块空间
