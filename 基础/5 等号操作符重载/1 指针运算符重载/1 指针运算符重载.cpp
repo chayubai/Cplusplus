@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-class Person
+class Person 
 {
 public:
 	Person(int age)
