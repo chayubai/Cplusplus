@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 class Complex
-{
+{ 
 public:
 	Complex(int flag)
 	{
