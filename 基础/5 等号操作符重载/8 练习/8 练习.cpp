@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-
+ 
 //1、完成讲义中的自定义的数组类，并且添加常用的操作符重载
 
 //2、完成自定义的string类
