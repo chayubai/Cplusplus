@@ -3,7 +3,7 @@
 #include "myString.h"
 
 void test1()
-{
+{ 
 	myString str("def");
 	myString str2 = "abcb";//有参构造myString str2 = str;拷贝构造
 

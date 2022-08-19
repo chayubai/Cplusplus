@@ -8,7 +8,7 @@ myString::myString(const char* str)
 	strcpy(this->pString, str);
 	this->m_Size = strlen(str);
 }
-
+ 
 //øΩ±¥ππ‘Ï
 myString::myString(const myString& str)
 {
