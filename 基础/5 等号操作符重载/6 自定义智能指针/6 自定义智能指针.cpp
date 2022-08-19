@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 using namespace std;
-class A
+class A 
 {
 public:
 	A(int a)
