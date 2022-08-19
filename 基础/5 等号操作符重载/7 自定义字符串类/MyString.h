@@ -5,7 +5,7 @@
 using namespace std;
 
 class MyString
-{
+{ 
 public:
 	//×¢Òâ£º
 	//strlen("123");²»Ëã\0  -- 3

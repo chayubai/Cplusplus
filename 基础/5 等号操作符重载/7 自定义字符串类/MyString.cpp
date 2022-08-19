@@ -5,7 +5,7 @@ MyString::MyString()//MyString mystring;假设调用无参构造，字符串地址为空
 	this->len = 0;
 	this->str = NULL;//‘\0’== NULL 0字符或空指针  ""  == "\0" 空字符串
 }
-//有参构造
+//有参构造 
 MyString::MyString(const char* str)
 {
 	if (str == NULL)//char* c = NULL;MyString s(c);传入NULL,开辟一个空字符串

@@ -4,7 +4,7 @@
 
 int main()
 {
-#if 0
+#if 0 
 	MyString s1("abc");//有参构造
 	MyString s2(s1);//拷贝构造
 	MyString s3 = "123";
