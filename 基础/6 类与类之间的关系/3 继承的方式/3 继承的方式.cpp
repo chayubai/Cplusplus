@@ -3,7 +3,7 @@
 using namespace std;
 //最开始的父类中protected和private权限控制的成员变量，是相同的
 class Parent
-{
+{ 
 public:
 	int pub;//在类的内部和外部都可以访问
 protected:
