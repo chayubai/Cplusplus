@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>//CÓïÑÔµÄstring.h/cstring
 using namespace std;
-
+ 
 class Student
 {
 public:
