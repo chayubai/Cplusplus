@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-#if 0
+#if 0 
 class News
 {
 public:
