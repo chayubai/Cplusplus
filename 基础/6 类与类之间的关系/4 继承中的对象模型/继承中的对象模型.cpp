@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
-using namespace std;
+using namespace std; 
 //注意：父类的私有属性，是被继承的，只是子类访问不到，由编译器给隐藏了
 //可以利用开发人员工具查看对象模型
 //1、工具的路径：Develper Command Prompt for VS2019 点击打开
