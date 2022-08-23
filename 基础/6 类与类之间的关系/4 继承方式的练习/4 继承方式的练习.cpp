@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class A
+class A 
 {
 private:
 	int a;
