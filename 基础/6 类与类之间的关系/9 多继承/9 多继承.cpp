@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-class Base1
+class Base1 
 {
 public:
 	Base1()
