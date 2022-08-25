@@ -5,7 +5,7 @@ using namespace std;
 //一定是同一个作用域下。
 #if 0
 int main()
-{
+{ 
 	void func()
 	{
 		
