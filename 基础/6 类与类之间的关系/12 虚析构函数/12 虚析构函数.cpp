@@ -5,7 +5,7 @@ using namespace std;
 //注意：类如果什么控制访问权限都不写，默认是private
 class A
 {
-public:
+public: 
 	A()
 	{
 		cout << "A()..." << endl;
