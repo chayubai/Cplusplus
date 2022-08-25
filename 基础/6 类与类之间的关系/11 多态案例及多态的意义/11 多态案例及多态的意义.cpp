@@ -5,7 +5,7 @@ using namespace std;
 class Hero//”¢–€¿‡
 {
 public:
-	virtual int getAd()
+	virtual int getAd() 
 	{
 		return 10;
 	}
