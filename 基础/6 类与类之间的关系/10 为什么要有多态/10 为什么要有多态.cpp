@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 #include <string>
-
+ 
 //如果有几个上似而不完全相同的对象,
 //有时人们要求在向它们发出同一个消息时，它们的反应各不相同,分别执行不同的操作。
 //这种情况就是多态现象。
