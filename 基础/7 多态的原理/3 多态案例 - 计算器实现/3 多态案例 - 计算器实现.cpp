@@ -4,7 +4,7 @@
 using namespace std;
 #include <string>
 
-#if 0
+#if 0 
 //非多态方式：
 class calculator
 {
