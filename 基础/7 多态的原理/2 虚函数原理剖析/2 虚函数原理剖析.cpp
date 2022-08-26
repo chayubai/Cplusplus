@@ -5,7 +5,7 @@ using namespace std;
 
 class Animal
 {
-public:
+public: 
 	virtual void speak()
 	{
 		cout << "动物在说话" << endl;
