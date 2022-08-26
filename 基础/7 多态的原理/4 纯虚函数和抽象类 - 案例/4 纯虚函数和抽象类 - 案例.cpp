@@ -3,7 +3,7 @@
 using namespace std;
 
 //基类 - 抽象制作饮品
-class AbstractDrinking
+class AbstractDrinking 
 {
 public:
 	//烧水
