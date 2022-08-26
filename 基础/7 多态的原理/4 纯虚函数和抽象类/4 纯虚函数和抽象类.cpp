@@ -8,7 +8,7 @@ using namespace std;
 //基类
 class AbstractCalculator
 {
-public:
+public: 
 
 	//如果父类的虚函数的实现没有意义，可以用纯虚函数代替
 	/*virtual int getResult()
