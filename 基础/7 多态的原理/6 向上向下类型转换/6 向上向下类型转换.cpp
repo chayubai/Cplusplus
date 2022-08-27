@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-//即：类的兼容性原则
+//即：类的兼容性原则 
 class Animal
 {
 public:
