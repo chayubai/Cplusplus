@@ -3,7 +3,7 @@
 using namespace std;
 
 //			抽象层
-//
+// 
 //抽象CPU基类
 class CPU
 {
