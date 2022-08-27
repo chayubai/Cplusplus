@@ -4,7 +4,7 @@ using namespace std;
 
 class Animal
 {
-public:
+public: 
 	Animal()
 	{
 		cout << "调用Animal构造函数" << endl;
