@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 //1、重载：同一作用域的同名函数
-//a.同一个作用域
+//a.同一个作用域 
 //b.参数个数，参数顺序，参数类型不同
 //c.和函数返回值，没有关系
 //d.const也可以作为重载条件   //do(const Teacher& t){}  do(Teacher& t){}
