@@ -19,6 +19,7 @@ char* getC(int n)
 int& getA1()
 {
 	int a = 10;
+	//函数返回啥变量，引用就是该变量的别名
 	return a;//int &tmp = a;
 }
 int& getA2()
@@ -32,9 +33,10 @@ int main()
 	main_a = getA1();//main_a = tmp;//赋值操作，数值拷贝
 	cout << "main_a = " << main_a << endl;
 #if 0
-	//引用作为返回类型，不要返回局部变量的引用，
+	//引用作为返回类型，不要返回局部变量的引用
+	//main_a_re是别名，main_a_re是a的别名
 	int& main_a_re = getA1();//int& main_a_re = tmp;getA1()相当于返回a
-	cout << "main_a_re = " << main_a_re << endl;
+	cout << "main_a_re = " << main_a_re << endl;//非法访问
 	cout << "main_a_re = " << main_a_re << endl;
 #endif
 
@@ -42,8 +44,9 @@ int main()
 	cout << "main_a_re = " << main_a_re << endl;
 	cout << "main_a_re = " << main_a_re << endl;
 
-	//引用如果当函数返回类型的话，函数可以当左值
-	getA2() = 1000;//函数返回的是变量的引用
+	//引用如果当函数返回类型的话，函数的返回值可以当左值
+	getA2() = 1000;//函数返回的是变量a的引用，也就是main_a_re，也就相当于a
+	//将a改为了1000
 
 	return 0;
 }
